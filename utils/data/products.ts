@@ -1,16 +1,20 @@
 export const products = [
   {
     id: '1',
-    name: 'T-Shirt Summer Vibes',
-    price: 119.99,
+    name: 'Cưa gỗ cầm tay cao cấp Nhật Bản ',
+    price: "185.000",
     discount: 30,
     quantityAvailable: 2,
     category: 'T-shirt',
-    currentPrice: 89.99,
+    currentPrice: "165.000",
     sizes: ['xl', 'l'], 
     colors: ['#000', '6F3E18', '#D4BE8D', '#FFF'],
     images: [
       '/images/products/product-1.jpg',
+      'https://ezmarts.vn/pictures/picfullsizes/2022/09/30/xtd1664506310.jpg',
+      'https://ezmarts.vn/pictures/picfullsizes/2022/09/30/dez1664506310.jpg'
+      ,'https://ezmarts.vn/pictures/picfullsizes/2022/09/30/fhy1664506310.jpg',
+      'https://ezmarts.vn/pictures/picfullsizes/2022/09/30/fyn1664506310.jpg'
     ],
     punctuation: {
       countOpinions: 81,
@@ -61,11 +65,12 @@ export const products = [
   },
   {
     id: '2',
-    name: 'T-Shirt Summer Vibes',
-    price: 119.99,
+    name: 'Lân đỏ đậm đặc QT04 - Chai 100ml',
+    price: "29,000",
+    discount: 5,
     quantityAvailable: 2,
     category: 'T-shirt',
-    currentPrice: 89.99,
+    currentPrice: "24,000",
     sizes: ['xl', 'l'], 
     colors: ['#000', '6F3E18', '#D4BE8D', '#FFF'],
     images: [
@@ -120,11 +125,11 @@ export const products = [
   },
   {
     id: '3',
-    name: 'T-Shirt Summer Vibes',
-    price: 119.99,
+    name: 'Vòi xịt nước thông minh',
+    price: "185,000",
     quantityAvailable: 2,
     category: 'T-shirt',
-    currentPrice: 89.99,
+    currentPrice: "185,000",
     sizes: ['xl', 'l'], 
     colors: ['#000', '6F3E18', '#D4BE8D', '#FFF'],
     images: [
@@ -179,11 +184,13 @@ export const products = [
   },
   {
     id: '4',
-    name: 'T-Shirt Summer Vibes',
-    price: 119.99,
+    name: 'Kéo ghép cành cây đa năng chất liệu thép không gỉ N171',
+    price: "365,000",
     quantityAvailable: 2,
+    discount: 5,
+
     category: 'T-shirt',
-    currentPrice: 89.99,
+    currentPrice: "245,000",
     sizes: ['xl', 'l'], 
     colors: ['#000', '6F3E18', '#D4BE8D', '#FFF'],
     images: [
@@ -238,11 +245,11 @@ export const products = [
   },
   {
     id: '5',
-    name: 'T-Shirt Summer Vibes',
-    price: 119.99,
+    name: ' Bình phun xịt thuốc, xịt côn trùng 6 lít – xuất khẩu Châu Âu ',
+    price: "250,000",
     quantityAvailable: 2,
     category: 'T-shirt',
-    currentPrice: 89.99,
+    currentPrice: "250,000",
     sizes: ['xl', 'l'], 
     colors: ['#000', '6F3E18', '#D4BE8D', '#FFF'],
     images: [
@@ -297,12 +304,12 @@ export const products = [
   },
   {
     id: '6',
-    name: 'T-Shirt Summer Vibes',
-    price: 119.99,
+    name: 'Đầu tưới nhỏ giọt tự động gắn chai nước tiện lợi N289  ',
+    price: "30,000",
     discount: 30,
     quantityAvailable: 2,
     category: 'T-shirt',
-    currentPrice: 89.99,
+    currentPrice: "30,000",
     sizes: ['xl', 'l'], 
     colors: ['#000', '6F3E18', '#D4BE8D', '#FFF'],
     images: [

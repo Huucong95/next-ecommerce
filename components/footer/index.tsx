@@ -6,9 +6,8 @@ const Footer = () => {
       <div className="container">
         <div className="site-footer__top">
           <div className="site-footer__description">
-            <h6><Logo /> <span>E</span>-Shop</h6>
-            <p>House My Brand designs clothing for the young, the old & everyone in between – but most 
-              importantly, for the fashionable</p>
+            <h6><Logo /></h6>
+            <p>Thành Phát - cung cấp các loại dụng cụ nông nghiệp chất lượng, giá cả hợp lý.</p>
             <ul className="site-footer__social-networks">
               <li><a href="#"><i className="icon-facebook"></i></a></li>
               <li><a href="#"><i className="icon-twitter"></i></a></li>
@@ -46,7 +45,7 @@ const Footer = () => {
       
       <div className="site-footer__bottom">
         <div className="container">
-          <p>DESIGN BY ICEO.CO - © 2019. ALL RIGHTS RESERVED.</p>
+          <p>DESIGN BY ThanhPhat - © 2023. ALL RIGHTS RESERVED.</p>
         </div>
       </div>
     </footer>

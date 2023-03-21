@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@layer base {
+  body {
+    font-family: "Barlow", sans-serif;
+    @apply bg-gray-100  text-white;
+  }
+}
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+input:checked + div {  
+  @apply border-[#B22830];  
+}  
+input:checked + div svg {  
+  @apply block;  
+}
+@layer components {
+
+  .is-active {
+    @apply bg-[#B22830]   text-white !important 
+  }
+  .cardProduct {
+    padding: 12px 24px;
+    width: 100%;
+    background: radial-gradient(
+      171.43% 71.87% at 50% 50%,
+      #ffffff 0%,
+      #f0e4d6 100%
+    );
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+  }
+  .skeleton {
+    @apply bg-gray-300 animate-pulse dark:bg-gray-700 shadow-sm;
+  }
+  .textCap {
+    text-transform: capitalize !important;
+  }
+  .maxHeight {
+    max-height: 18vh;
+  }
+  .btn-blue {
+    @apply text-white font-bold px-4 py-2 rounded bg-blue-600 hover:bg-blue-500;
+  }
+  .textPrimary {
+    @apply text-[#B22830];
+  }
+  .textNormal {
+    @apply text-[#4F382A];
+  }
+  .btnWhite {
+    @apply textPrimary bg-white rounded-md px-12 py-4 font-semibold cursor-pointer;
+  }
+  .borderPrimary {
+    @apply border-[#B22830];
+  }
+
+  .textPrimary2 {
+    @apply text-[#DFD5C8];
+  }
+  .bgPrimary4 {
+    @apply bg-[#DFD5C8];
+  }
+  .bgBtn {
+    @apply bg-[#EA7C69];
+  }
+  .bgChecked {
+    @apply checked:bg-[#B22830];
+  }
+  .bgPrimary {
+    @apply bg-[#B22830];
+  }
+  .bgPrimary2 {
+    background: radial-gradient(
+      171.43% 71.87% at 50% 50%,
+      #ffffff 0%,
+      #f0e4d6 100%
+    );
+  }
+
+  .bgPrimary3 {
+    @apply bg-[#F1DBBF];
+  }
+}

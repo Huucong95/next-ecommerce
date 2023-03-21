@@ -8,7 +8,7 @@ import ProductsFeatured from '../../components/products-featured';
 import Gallery from '../../components/product-single/gallery';
 import Content from '../../components/product-single/content';
 import Description from '../../components/product-single/description';
-import Reviews from '../../components/product-single/reviews';
+// import Reviews from '../../components/product-single/reviews';
 import { server } from '../../utils/server'; 
 
 // types
@@ -36,7 +36,6 @@ const Product = ({ product }: ProductPageType) => {
   return (
     <Layout>
       <Breadcrumb />
-
       <section className="product-single">
         <div className="container">
           <div className="product-single__content">
@@ -46,18 +45,18 @@ const Product = ({ product }: ProductPageType) => {
 
           <div className="product-single__info">
             <div className="product-single__info-btns">
-              <button type="button" onClick={() => setShowBlock('description')} className={`btn btn--rounded ${showBlock === 'description' ? 'btn--active' : ''}`}>Description</button>
-              <button type="button" onClick={() => setShowBlock('reviews')} className={`btn btn--rounded ${showBlock === 'reviews' ? 'btn--active' : ''}`}>Reviews (2)</button>
+              <button type="button" onClick={() => setShowBlock('description')} className={`btn btn--rounded ${showBlock === 'description' ? 'btn--active' : ''}`}>Thông tin sản phẩm</button>
+              {/* <button type="button" onClick={() => setShowBlock('reviews')} className={`btn btn--rounded ${showBlock === 'reviews' ? 'btn--active' : ''}`}>Reviews (2)</button> */}
             </div>
 
             <Description show={showBlock === 'description'} />
-            <Reviews product={product} show={showBlock === 'reviews'} />
+            {/* <Reviews product={product} show={showBlock === 'reviews'} /> */}
           </div>
         </div>
       </section>
 
       <div className="product-single-page">
-        <ProductsFeatured />
+        <ProductsFeatured title={"Gợi ý cho bạn"} />
       </div>
       <Footer />
     </Layout>
