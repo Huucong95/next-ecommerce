@@ -1,10 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type {  NextApiResponse } from 'next';
 
 // fake data
 import products from '../../utils/data/products';
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
-  console.log(req);
+export default ( res: NextApiResponse) => {
 
   // fake loading time
   setTimeout(() => {

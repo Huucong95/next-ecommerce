@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Header from 'components/header';
+// import Header from 'components/header';
 import { useRouter } from 'next/router';
 
 type LayoutType = {
@@ -17,7 +17,7 @@ export default ({ children, title = 'Next.js Ecommerce' }: LayoutType) => {
         <title>Page not found &mdash; { title }</title>
       </Head>
 
-      <Header isErrorPage />
+      {/* <Header isErrorPage /> */}
 
       <main className={(pathname !== '/' ? 'main-page' : '')}>
         { children }

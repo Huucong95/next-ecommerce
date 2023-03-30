@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { removeProduct, setCount } from 'store/reducers/cart';
 import { ProductStoreType } from 'types';
+import { URL } from 'utils/env';
+import { formatMoney } from 'utils/format';
 // color, size,
 const ShoppingCart = ({ thumb, name, id,  count, price }: ProductStoreType) => {
   const dispatch = useDispatch();
@@ -29,8 +31,7 @@ const ShoppingCart = ({ thumb, name, id,  count, price }: ProductStoreType) => {
         thumb, 
         name, 
         id, 
-        // color, 
-        // size, 
+    
         count, 
         price
       },
@@ -45,7 +46,7 @@ const ShoppingCart = ({ thumb, name, id,  count, price }: ProductStoreType) => {
       <td>
         <div className="cart-product">
           <div className="cart-product__img">
-            <img src={thumb} alt="" />
+            <img src={URL+thumb} alt="" />
           </div>
 
           <div className="cart-product__content">
@@ -54,8 +55,6 @@ const ShoppingCart = ({ thumb, name, id,  count, price }: ProductStoreType) => {
           </div>
         </div>
       </td>
-      {/* <td className="cart-item-before" data-label="Color">{color}</td>
-      <td className="cart-item-before" data-label="Size">{size}</td> */}
       <td>
         <div className="quantity-button">
           <button type="button" onClick={() => setProductCount(count - 1)} className="quantity-button__btn">
@@ -67,7 +66,8 @@ const ShoppingCart = ({ thumb, name, id,  count, price }: ProductStoreType) => {
           </button>
         </div>
       </td>
-      <td>${price}</td>
+      <td>{formatMoney(price)}đ</td>
+      <td>{formatMoney(count*price)}đ</td>
       <td className="cart-item-cancel"><i className="icon-cancel" onClick={() => removeFromCart()}></i></td>
     </tr>
   )

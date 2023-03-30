@@ -1,27 +1,27 @@
 import Layout from '../layouts/Main';
-import Link from 'next/link';
-import { useForm } from "react-hook-form";
-import { server } from '../utils/server'; 
-import { postData } from '../utils/services'; 
+// import Link from 'next/link';
+// import { useForm } from "react-hook-form";
+// import { server } from '../utils/server'; 
+// import { postData } from '../utils/services'; 
 
-type ForgotMail = {
-  email: string;
-}
+// type ForgotMail = {
+//   email: string;
+// }
 
 const ForgotPassword = () => {
-  const { register, handleSubmit, errors } = useForm();
+  // const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = async (data: ForgotMail) => {
-    const res = await postData(`${server}/api/login`, {
-      email: data.email,
-    });
+  // const onSubmit = async (data: ForgotMail) => {
+  //   const res = await postData(`${server}/api/login`, {
+  //     email: data.email,
+  //   });
 
-    console.log(res);
-  };
+  //   // console.log(res,errors);
+  // };
 
   return (
     <Layout>
-      <section className="form-page">
+      {/* <section className="form-page">
         <div className="container">
           <div className="back-button-section">
             <Link href="/products">
@@ -73,7 +73,7 @@ const ForgotPassword = () => {
           </div>
 
         </div>
-      </section>
+      </section> */}
     </Layout>
   )
 }

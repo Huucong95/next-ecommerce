@@ -1,13 +1,9 @@
 import ProductsCarousel from "./carousel";
-import useSwr from "swr";
 import Link from "next/link";
 
-const ProductsFeatured = ({ title }: any) => {
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const { data } = useSwr("/api/products", fetcher);
-
+const ProductsFeatured = ({ title,products, slug }: any,) => {
   return (
-    <section className="section section-products-featured">
+    <section className=" section section-products-featured">
       <div className="container">
         <div
           className="border-b-2 border-orange-600 mb-5 flex justify-between text-xl"
@@ -21,12 +17,12 @@ const ProductsFeatured = ({ title }: any) => {
               <a>{title}</a>
             </Link>
           </div>
-          <div className="text-sm">
-            <Link href="#">Xem thêm</Link>
-          </div>
+          {/* <div className="text-sm">
+            <Link href={"/danh-muc/"+slug}>Xem thêm</Link>
+          </div> */}
         </div>
 
-        <ProductsCarousel products={data} />
+        <ProductsCarousel products={products} />
       </div>
     </section>
   );

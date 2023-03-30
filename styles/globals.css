@@ -21,19 +21,18 @@
 
 /* For IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-input:checked + div {  
-  @apply border-[#B22830];  
-}  
-input:checked + div svg {  
-  @apply block;  
+input:checked + div {
+  @apply border-[#B22830];
+}
+input:checked + div svg {
+  @apply block;
 }
 @layer components {
-
   .is-active {
-    @apply bg-[#B22830]   text-white !important 
+    @apply bg-[#B22830]   text-white !important;
   }
   .cardProduct {
     padding: 12px 24px;
@@ -68,7 +67,7 @@ input:checked + div svg {
     @apply textPrimary bg-white rounded-md px-12 py-4 font-semibold cursor-pointer;
   }
   .borderPrimary {
-    @apply border-[#B22830];
+    border: 1px solid orange;
   }
 
   .textPrimary2 {

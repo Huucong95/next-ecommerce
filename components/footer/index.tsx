@@ -1,56 +1,75 @@
-import Logo from '../../assets/icons/logo';
+import Link from "next/link";
+import { URL } from "utils/env";
+import Logo from "../../assets/icons/logo";
 
-const Footer = () => {
+const Footer = ({ footer }: any) => {
+  console.log(footer);
+
   return (
-    <footer className="site-footer">
+    <footer className="site-footer shadow-teal-500">
       <div className="container">
         <div className="site-footer__top">
           <div className="site-footer__description">
-            <h6><Logo /></h6>
-            <p>Thành Phát - cung cấp các loại dụng cụ nông nghiệp chất lượng, giá cả hợp lý.</p>
+            <h6>
+              <Logo />
+            </h6>
+            <p>{footer?.description}</p>
             <ul className="site-footer__social-networks">
-              <li><a href="#"><i className="icon-facebook"></i></a></li>
-              <li><a href="#"><i className="icon-twitter"></i></a></li>
-              <li><a href="#"><i className="icon-linkedin"></i></a></li>
-              <li><a href="#"><i className="icon-instagram"></i></a></li>
-              <li><a href="#"><i className="icon-youtube-play"></i></a></li>
+              <ul className="site-footer__social-networks">
+                {footer.ListSocial.map((item: any, index: number) => {
+                  return (
+                    <li key={index}>
+                      <a href={item.url} target="_blank">
+                        <img
+                          className="w-6"
+                          src={URL + item.image.data.attributes.url}
+                          alt=""
+                        />
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
             </ul>
+            <p className="pt-6">{footer?.address}</p>
           </div>
 
           <div className="site-footer__links">
-            <ul>
-              <li>Shopping online</li>
-              <li><a href="#">Order Status</a></li>
-              <li><a href="#">Shipping and Delivery</a></li>
-              <li><a href="#">Returns</a></li>
-              <li><a href="#">Payment options</a></li>
-              <li><a href="#">Contact Us</a></li>
-            </ul>
-            <ul>
-              <li>Information</li>
-              <li><a href="#">Gift Cards</a></li>
-              <li><a href="#">Find a store</a></li>
-              <li><a href="#">Newsletter</a></li>
-              <li><a href="#">Bacome a member</a></li>
-              <li><a href="#">Site feedback</a></li>
-            </ul>
-            <ul>
-              <li>Contact</li>
-              <li><a href="#">store@uikit.com</a></li>
-              <li><a href="#">Hotline: +1 131 138 138</a></li>
-            </ul>
+            {footer.items.map((item: any, index: number) => {
+              return (
+                <ul key={index}>
+                  <li>{item.Name}</li>
+                  {item.SubItem.map((item2: any, index: number) => {
+                    return (
+                      <li key={index}>
+                        <Link
+                          href={
+                            item2.type
+                              ? item2.type == "email"
+                                ? "mailto:" + item2.url
+                                : "tel:" + item2.url
+                              : item2.url
+                          }
+                        >
+                          {item2.name}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              );
+            })}
           </div>
         </div>
       </div>
-      
+
       <div className="site-footer__bottom">
         <div className="container">
           <p>DESIGN BY ThanhPhat - © 2023. ALL RIGHTS RESERVED.</p>
         </div>
       </div>
     </footer>
-  )
+  );
 };
 
-
-export default Footer
+export default Footer;

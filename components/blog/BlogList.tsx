@@ -1,23 +1,10 @@
 import Link from "next/link";
 import { URL } from "../../utils/env";
-const Blogs = ({ blogs }: any) => {
-  return (
-    <div className="container  pb-12">
-      <div
-        className="border-b-2 border-orange-600 mb-5 flex justify-between text-xl"
-        style={{ borderBottom: "1px solid #eee" }}
-      >
-        <div
-          className="text-orange-600 font-bold flex items-center pb-2 pr-2 border-b-2 border-indigo-600 uppercase"
-          style={{ borderBottom: "4px solid rgb(249 115 22)" }}
-        >
-          <Link href="#" className="font-semibold inline-block ">
-            Bài viết mới
-          </Link>
-        </div>
-      
-      </div>
+import React from "react";
 
+const BlogList = ({ blogs }: any) => {
+  return (
+    <div className="max-w-screen-xl mx-auto px-4 mb-20 ">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         {blogs?.map((item: any, index: number) => {
           return (
@@ -33,6 +20,7 @@ const Blogs = ({ blogs }: any) => {
                     src={`${URL}${item.attributes?.banner?.data.attributes.url}`}
                     alt={item.attributes?.banner?.data.attributes.name}
                   />
+
                   <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
                   <Link
                     href={`/danh-muc-blog/${item.attributes?.blog_category_child?.data.attributes.slug}`}
@@ -60,14 +48,14 @@ const Blogs = ({ blogs }: any) => {
                 </p>
               </div>
               {/* <div className="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-                  <span className="ml-1">6 mins ago</span>
-                </span>
-
-                <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-                  <span className="ml-1">39 Comments</span>
-                </span>
-              </div> */}
+                    <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+                      <span className="ml-1">6 mins ago</span>
+                    </span>
+    
+                    <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+                      <span className="ml-1">39 Comments</span>
+                    </span>
+                  </div> */}
             </div>
           );
         })}
@@ -76,4 +64,4 @@ const Blogs = ({ blogs }: any) => {
   );
 };
 
-export default Blogs;
+export default BlogList;

@@ -1,26 +1,26 @@
-type GalleryProductType = {
-  images: string[]
-}
+import { URL } from "utils/env";
 
-const Gallery = ({ images }: GalleryProductType) => {
-  const featImage = images[0];
+const Gallery = ({ images,image }: any) => {
+ 
+  const featImage = image?.data.attributes.url;
 
   return (
     <section className="product-gallery">
       <div className="product-gallery__thumbs">
-        {images.map(image => (
-          <div key={image} className="product-gallery__thumb">
-            <img src={image} alt="" />
-          </div>
-        ))}
+        {images?.data?.map((item: any, index: number) => {
+          return (
+            <div key={index} className="product-gallery__thumb">
+              <img src={URL + item.attributes.url} alt="" />
+            </div>
+          );
+        })}
       </div>
 
       <div className="product-gallery__image">
-        <img src={featImage} alt="" />
+        <img src={URL + featImage} alt="" />
       </div>
     </section>
   );
 };
-  
+
 export default Gallery;
-  
