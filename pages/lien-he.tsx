@@ -1,11 +1,11 @@
 import Layout from "../layouts/Main";
 import { GetServerSideProps } from "next";
 
-import PageIntro from "../components/page-intro";
-import ProductsFeatured from "../components/products-featured";
+// import PageIntro from "../components/page-intro";
+// import ProductsFeatured from "../components/products-featured";
 import Footer from "../components/footer";
-import Subscribe from "../components/subscribe";
-import Blogs from "../components/blog";
+// import Subscribe from "../components/subscribe";
+// import Blogs from "../components/blog";
 import {
   getBlogsIndex,
   getIndex,
@@ -42,12 +42,6 @@ export const getServerSideProps: GetServerSideProps = async ({}) => {
 };
 
 const Contact = ({
-  blogs,
-  productHot,
-  productNew,
-  banner,
-  featureds,
-  footerBanner,
   WhyChooseUs,
 }: any) => {
   console.log(WhyChooseUs);

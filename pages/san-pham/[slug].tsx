@@ -1,8 +1,8 @@
 import { GetServerSideProps } from "next";
 
-import Footer from "../../components/footer";
+// import Footer from "../../components/footer";
 import Layout from "../../layouts/Main";
-import Breadcrumb from "../../components/breadcrumb";
+// import Breadcrumb from "../../components/breadcrumb";
 import Gallery from "../../components/product-single/gallery";
 import Content from "../../components/product-single/content";
 import Description from "../../components/product-single/description";
