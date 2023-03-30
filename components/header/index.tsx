@@ -103,7 +103,7 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
                                           <div
                                             key={index3}
                                             onClick={() =>
-                                              router.push("/danh-muc/"+item3.attributes.slug)
+                                              router.push("/cua-hang/"+item3.attributes.slug)
                                             }
                                             className="text-black hover:text-orange-500 text-xs pb-2"
                                           >
