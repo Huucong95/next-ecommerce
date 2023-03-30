@@ -19,9 +19,9 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
 
   // const [onTop, setOnTop] = useState(( !arrayPaths.includes(router.pathname) || isErrorPage ) ? false : true);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
+  // const [searchOpen, setSearchOpen] = useState(false);
   const navRef = useRef(null);
-  const searchRef = useRef(null);
+  // const searchRef = useRef(null);
 
   // const headerClass = () => {
   //   if(window.pageYOffset === 0) {
@@ -46,13 +46,13 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
     setMenuOpen(false);
   };
 
-  const closeSearch = () => {
-    setSearchOpen(false);
-  };
+  // const closeSearch = () => {
+  //   setSearchOpen(false);
+  // };
 
   // on click outside
   useOnClickOutside(navRef, closeMenu);
-  useOnClickOutside(searchRef, closeSearch);
+  // useOnClickOutside(searchRef, closeSearch);
 
   return (
     // <header className={`site-header ${!onTop ? 'site-header--fixed' : ''}`}>

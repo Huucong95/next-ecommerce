@@ -9,7 +9,6 @@ import { useState } from "react";
 import { postOrder } from "utils/api";
 import { toast } from "react-toastify";
 import { clearCart } from "store/reducers/cart";
-import Link from "next/link";
 const CheckoutPage = () => {
   const dispatch = useDispatch();
   const [data, setData] = useState<any>();

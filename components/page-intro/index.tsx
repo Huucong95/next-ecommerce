@@ -36,7 +36,7 @@ const PageIntro = ({ banner, footerBanner }: any) => {
           <ul className="shop-data__items">
             {footerBanner.items.map((item: any, index: any) => {
               return (
-                <li className="flex justify-center items-center">
+                <li className="flex justify-center items-center" key={index}>
                   {/* <i className="icon-shipping"></i> */}
                   <div className="bg-[#fff3df] flex justify-center items-center h-8 w-8 rounded-md mx-2">
                     <img

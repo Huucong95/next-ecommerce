@@ -14,6 +14,8 @@ const ProductItem = ({
   price,
   currentPrice,
 }: ProductTypeList) => {
+  console.log(discount, images);
+  
   const dispatch = useDispatch();
   const router = useRouter();
 

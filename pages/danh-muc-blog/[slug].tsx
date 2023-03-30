@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
 const Blog = (data: any) => {
   const [detail, setDetail] = useState<any>(data.data.data);
-  const [total, setTotal] = useState<any>(data.data.meta.pagination.total);
+  const total = data.data.meta.pagination.total
 
   const router = useRouter();
   const { slug } = router.query;

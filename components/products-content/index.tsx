@@ -1,8 +1,8 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import List from './list';
 
 const ProductsContent = ({products}:any) => {
-  const [orderProductsOpen, setOrderProductsOpen] = useState(false);
+  // const [orderProductsOpen, setOrderProductsOpen] = useState(false);
   
   return (
     <section className="products-content">

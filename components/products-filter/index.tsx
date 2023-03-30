@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Checkbox from "./form-builder/checkbox";
+// import Checkbox from "./form-builder/checkbox";
 
-import productsTypes from "./../../utils/data/products-types";
+// import productsTypes from "./../../utils/data/products-types";
 import { useRouter } from "next/router";
 import { getCategory } from "utils/api";
 

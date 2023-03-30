@@ -1,7 +1,7 @@
 import ProductsCarousel from "./carousel";
 import Link from "next/link";
 
-const ProductsFeatured = ({ title,products, slug }: any,) => {
+const ProductsFeatured = ({ title,products }: any,) => {
   return (
     <section className=" section section-products-featured">
       <div className="container">
