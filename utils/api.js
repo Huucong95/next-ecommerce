@@ -193,6 +193,9 @@ export async function getBlogsDetail(slug) {
         Content: {
           populate: ["video", "*"],
         },
+        SEO: {
+          populate: "*"
+        },
       },
     }
   );
@@ -255,6 +258,9 @@ export async function getProduct(slug) {
       },
       Content: {
         populate: ["video", "*"],
+      },
+      SEO: {
+        populate: "*"
       },
     },
   });

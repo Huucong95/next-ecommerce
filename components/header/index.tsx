@@ -30,6 +30,11 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
   //     setOnTop(false);
   //   }
   // }
+  const [showMenu, setShowMenu] = useState(false);
+
+  function handleClick() {
+    setShowMenu(!showMenu);
+  }
 
   useEffect(() => {
     if (!arrayPaths.includes(router.pathname) || isErrorPage) {
@@ -67,7 +72,9 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
         </Link>
         <nav
           ref={navRef}
-          className={`site-nav flex flex-col pt-2 md:pt-0 md:flex-row gap-3 md:flex ${menuOpen ? "site-nav--open" : ""}`}
+          className={`site-nav flex flex-col pt-2 md:pt-0 md:flex-row gap-3 md:flex ${
+            menuOpen ? "site-nav--open" : ""
+          }`}
         >
           <>
             {menus?.map((item: any, index: number) => {
@@ -103,7 +110,10 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
                                           <div
                                             key={index3}
                                             onClick={() =>
-                                              router.push("/cua-hang/"+item3.attributes.slug)
+                                              router.push(
+                                                "/cua-hang/" +
+                                                  item3.attributes.slug
+                                              )
                                             }
                                             className="text-black hover:text-orange-500 text-xs pb-2"
                                           >
@@ -128,14 +138,13 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
                             {item?.attributes?.items?.data.map(
                               (item2: any, index2: number) => {
                                 return (
-                                  <li
-                                    key={index2}
-                                    className="py-1"
-                                    onClick={() =>
-                                      router.push(item2.attributes.url)
-                                    }
-                                  >
-                                    <div className=" font-medium text-sm text-black uppercase hover:text-orange-500 cursor-pointer">
+                                  <li key={index2} className="py-1">
+                                    <div
+                                      onClick={() =>
+                                        router.push(item2.attributes.url)
+                                      }
+                                      className=" font-medium text-sm text-black uppercase hover:text-orange-500 cursor-pointer"
+                                    >
                                       {item2.attributes.title}
                                     </div>
                                   </li>

@@ -32,7 +32,7 @@ const ProductsFilter = () => {
           filtersOpen ? "products-filter__menu-btn--active" : ""
         }`}
       >
-        Add Filter <i className="icon-down-open"></i>
+        Danh mục <i className="icon-down-open"></i>
       </button>
 
       <div

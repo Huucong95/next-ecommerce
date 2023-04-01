@@ -14,6 +14,7 @@ import { ProductStoreType } from "types";
 import { useDispatch } from "react-redux";
 import { addProduct } from "store/reducers/cart";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const slug = query.slug;
@@ -50,8 +51,21 @@ const Product = ({ product }: any) => {
 
     dispatch(addProduct(productStore));
   };
+  console.log(product);
+  
   return (
     <Layout>
+      <Head>
+        <title>{product.SEO.metaTitle}</title>
+        <meta
+          name="viewport"
+          content="viewport-fit=cover width=device-width, initial-scale=1"
+        />
+        <meta name="keywords" content={product.SEO?.metaKeywords || ""}></meta>
+        <meta name="description" content={product.SEO?.metaDescription || ""}></meta>
+        <meta property="og:title" content={product.SEO?.metaTitle || ""} />
+        <meta charSet="utf-8"></meta>
+      </Head>
       {product && (
         <>
           {/* <Breadcrumb /> */}

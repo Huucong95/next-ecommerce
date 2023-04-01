@@ -5,6 +5,7 @@ import { getBlogsDetail } from "utils/api";
 import Layout from "../../layouts/Main";
 import Breadcrumb from "components/breadcrumb";
 import { URL } from "utils/env";
+import Head from "next/head";
 // import Reviews from '../../components/product-single/reviews';
 
 // types
@@ -20,13 +21,36 @@ const Blog = () => {
   };
   useEffect(() => {
     if (slug) {
-      setDetail(null)
+      setDetail(null);
       fetchBlogDetail(slug);
     }
   }, [slug]);
+// console.log(detail);
 
   return (
     <Layout>
+      {detail && detail.attributes.SEO && (
+        <Head>
+          <title>
+            {detail.attributes?.SEO?.metaTitle ? detail.attributes?.SEO?.metaTitle : "Nông cụ"}
+          </title>
+          <meta
+            name="viewport"
+            content="viewport-fit=cover width=device-width, initial-scale=1"
+          />
+          <meta
+            name="keywords"
+            content={detail.attributes?.SEO?.metaKeywords || ""}
+          ></meta>
+          <meta
+            name="description"
+            content={detail.attributes?.SEO?.metaDescription || ""}
+          ></meta>
+          <meta property="og:title" content={detail.attributes?.SEO?.metaTitle || ""} />
+          <meta charSet="utf-8"></meta>
+        </Head>
+      )}
+
       <Breadcrumb data={"Blog"} />
 
       {detail && (
@@ -41,9 +65,7 @@ const Blog = () => {
                   <ReactMarkdown
                     children={item.ricktext}
                     transformImageUri={(uri) =>
-                      uri.startsWith("http")
-                        ? uri
-                        : `${URL}${uri}`
+                      uri.startsWith("http") ? uri : `${URL}${uri}`
                     }
                   />
                 )}
@@ -51,7 +73,8 @@ const Blog = () => {
                   <video className="w-[80%] mx-auto" controls>
                     <source
                       src={
-                        process.env.NEXT_PUBLIC_URL + item.video.data?.attributes.url
+                        process.env.NEXT_PUBLIC_URL +
+                        item.video.data?.attributes.url
                       }
                       type={item.video.data.attributes.mime}
                     />
@@ -62,8 +85,6 @@ const Blog = () => {
           })}
         </div>
       )}
-
-      {/* <Footer /> */}
     </Layout>
   );
 };
