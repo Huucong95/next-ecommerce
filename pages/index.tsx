@@ -76,7 +76,6 @@ const IndexPage = ({
           slug={"san-pham-moi"}
         />
       )}
-      <Blogs blogs={blogs} />
 
       <section className="featured">
         <div className="container">
@@ -102,6 +101,8 @@ const IndexPage = ({
           })}
         </div>
       </section>
+      <Blogs blogs={blogs} />
+
       {/* <section className="section">
         <div className="container">
           <header className="section__intro">

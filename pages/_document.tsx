@@ -32,7 +32,7 @@ export default class CustomDocument extends Document<DocumentProps> {
     return (
       <html lang="en">
         <Head>
-        <link rel="shortcut icon" href="ico.png" />
+          <link rel="shortcut icon" href="ico.png" />
           {/* We only want to add the scripts if in production */}
           {isProduction && (
             <Fragment>
@@ -43,6 +43,7 @@ export default class CustomDocument extends Document<DocumentProps> {
                 async
                 src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
               />
+           
               <script
                 dangerouslySetInnerHTML={{
                   __html: `

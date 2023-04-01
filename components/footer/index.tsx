@@ -10,10 +10,12 @@ const Footer = ({ footer }: any) => {
       <div className="container">
         <div className="site-footer__top">
           <div className="site-footer__description md:w-[33%] w-full ">
-            <h6>
+            <h6 className="w-32">
               <Logo />
             </h6>
             <p className="text-black"> {footer?.description}</p>
+
+            <div className="fb-page" data-href="https://www.facebook.com/TP.dung.cu.nong.nghiep" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/TP.dung.cu.nong.nghiep" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/TP.dung.cu.nong.nghiep">Thành Phát - Bạn nhà nông</a></blockquote></div>
             <ul className="site-footer__social-networks">
               <ul className="site-footer__social-networks">
                 {footer.ListSocial.map((item: any, index: number) => {
@@ -41,7 +43,7 @@ const Footer = ({ footer }: any) => {
                   <li className="text-xl">{item.Name}</li>
                   {item.SubItem.map((item2: any, index: number) => {
                     return (
-                      <li key={index}>
+                      <li key={index} className="w-full">
                         <Link
                           href={
                             item2.type
@@ -68,6 +70,14 @@ const Footer = ({ footer }: any) => {
           <p>DESIGN BY ThanhPhat - © 2023. ALL RIGHTS RESERVED.</p>
         </div>
       </div>
+      <div id="fb-root"></div>
+              <script
+                async
+                defer
+                crossOrigin="anonymous"
+                src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v16.0"
+                nonce="JXSdhVsx"
+              ></script>
     </footer>
   );
 };
