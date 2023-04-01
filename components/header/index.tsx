@@ -30,7 +30,7 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
   //     setOnTop(false);
   //   }
   // }
-  const [showMenu, setShowMenu] = useState(false);
+  // const [showMenu, setShowMenu] = useState(false);
 
 
 
