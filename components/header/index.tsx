@@ -79,84 +79,160 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
           <>
             {menus?.map((item: any, index: number) => {
               return (
-                <div
-                  className="group relative dropdown  px-4 text-black hover:text-orange-500 cursor-pointer font-bold text-base uppercase tracking-wide"
-                  key={index}
-                >
+                <>
                   <div
-                    onClick={() => {
-                      if (item?.attributes?.items) {
-                        router.push("/" + item.attributes.slug);
-                      }
-                    }}
+                    className="hidden md:block group relative dropdown  px-4 text-black hover:text-orange-500 cursor-pointer font-bold text-base uppercase tracking-wide"
+                    key={index}
                   >
-                    {item?.attributes.title}
-                  </div>
-                  {item?.attributes.slug === "cua-hang" ? (
-                    <>
-                      {categories?.length > 0 && (
-                        <div className="group-hover:block dropdown-menu md:absolute hidden h-auto  min-w-max ">
-                          <ul className="top-0 w-80 bg-white md:shadow px-6 md:py-8 md:flex gap-8 min-w-max">
-                            {categories.map((item2: any, index2: number) => {
-                              return (
-                                <li key={index2} className="py-1">
-                                  <div className=" font-medium text-sm text-black uppercase  hover:text-orange-500 cursor-pointer">
-                                    <div className="text-black hover:text-black mb-4 border-bottom">
-                                      {item2.attributes.name}
-                                    </div>
-                                    {item2.attributes.category_children?.data.map(
-                                      (item3: any, index3: any) => {
-                                        return (
-                                          <div
-                                            key={index3}
-                                            onClick={() =>
-                                              router.push(
-                                                "/cua-hang/" +
-                                                  item3.attributes.slug
-                                              )
-                                            }
-                                            className="text-black hover:text-orange-500 text-xs pb-2"
-                                          >
-                                            {item3.attributes.name}
-                                          </div>
-                                        );
-                                      }
-                                    )}
-                                  </div>
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      {item?.attributes?.items?.data.length > 0 && (
-                        <div className="group-hover:block dropdown-menu md:absolute hidden h-auto ">
-                          <ul className="top-0 min-w-max bg-white md:shadow px-6 md:py-8">
-                            {item?.attributes?.items?.data.map(
-                              (item2: any, index2: number) => {
+                    <div
+                      onClick={() => {
+                        router.push("/" + item.attributes.slug);
+                      }}
+                    >
+                      {item?.attributes.title}
+                    </div>
+                    {item?.attributes.slug === "cua-hang" ? (
+                      <>
+                        {categories?.length > 0 && (
+                          <div className="group-hover:block dropdown-menu md:absolute hidden h-auto  min-w-max ">
+                            <ul className="top-0 w-80 bg-white md:shadow px-6 md:py-8 md:flex gap-8 min-w-max">
+                              {categories.map((item2: any, index2: number) => {
                                 return (
                                   <li key={index2} className="py-1">
-                                    <div
-                                      onClick={() =>
-                                        router.push(item2.attributes.url)
-                                      }
-                                      className=" font-medium text-sm text-black uppercase hover:text-orange-500 cursor-pointer"
-                                    >
-                                      {item2.attributes.title}
+                                    <div className=" font-medium text-sm text-black uppercase  hover:text-orange-500 cursor-pointer">
+                                      <div className="text-black hover:text-black mb-4 border-bottom">
+                                        {item2.attributes.name}
+                                      </div>
+                                      {item2.attributes.category_children?.data.map(
+                                        (item3: any, index3: any) => {
+                                          return (
+                                            <div
+                                              key={index3}
+                                              onClick={() =>
+                                                router.push(
+                                                  "/cua-hang/" +
+                                                    item3.attributes.slug
+                                                )
+                                              }
+                                              className="text-black hover:text-orange-500 text-xs pb-2"
+                                            >
+                                              {item3.attributes.name}
+                                            </div>
+                                          );
+                                        }
+                                      )}
                                     </div>
                                   </li>
                                 );
-                              }
-                            )}
-                          </ul>
-                        </div>
-                      )}
-                    </>
-                  )}
-                </div>
+                              })}
+                            </ul>
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        {item?.attributes?.items?.data.length > 0 && (
+                          <div className="group-hover:block dropdown-menu md:absolute hidden h-auto ">
+                            <ul className="top-0 min-w-max bg-white md:shadow px-6 md:py-8">
+                              {item?.attributes?.items?.data.map(
+                                (item2: any, index2: number) => {
+                                  return (
+                                    <li key={index2} className="py-1">
+                                      <div
+                                        onClick={() =>
+                                          router.push(item2.attributes.url)
+                                        }
+                                        className=" font-medium text-sm text-black uppercase hover:text-orange-500 cursor-pointer"
+                                      >
+                                        {item2.attributes.title}
+                                      </div>
+                                    </li>
+                                  );
+                                }
+                              )}
+                            </ul>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </div>
+                  <div
+                    className="relative md:hidden   px-4 text-black hover:text-orange-500 cursor-pointer font-bold text-base uppercase tracking-wide"
+                    key={index}
+                  >
+                    <div
+                      onClick={() => {
+                        router.push("/" + item.attributes.slug);
+                      }}
+                    >
+                      {item?.attributes.title}
+                    </div>
+                    {item?.attributes.slug === "cua-hang" ? (
+                      <>
+                        {categories?.length > 0 && (
+                          <div className="  h-auto  min-w-max ">
+                            <ul className="top-0 w-80 bg-white md:shadow px-6 md:py-8 md:flex gap-8 min-w-max">
+                              {categories.map((item2: any, index2: number) => {
+                                return (
+                                  <li key={index2} className="py-1">
+                                    <div className=" font-medium text-sm text-black uppercase  hover:text-orange-500 cursor-pointer">
+                                      <div className="text-black hover:text-black mb-4 border-bottom">
+                                        {item2.attributes.name}
+                                      </div>
+                                      {item2.attributes.category_children?.data.map(
+                                        (item3: any, index3: any) => {
+                                          return (
+                                            <div
+                                              key={index3}
+                                              onClick={() =>
+                                                router.push(
+                                                  "/cua-hang/" +
+                                                    item3.attributes.slug
+                                                )
+                                              }
+                                              className="text-black hover:text-orange-500 text-xs pb-2"
+                                            >
+                                              {item3.attributes.name}
+                                            </div>
+                                          );
+                                        }
+                                      )}
+                                    </div>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        {item?.attributes?.items?.data.length > 0 && (
+                          <div className="h-auto ">
+                            <ul className="top-0 min-w-max bg-white md:shadow px-6 md:py-8">
+                              {item?.attributes?.items?.data.map(
+                                (item2: any, index2: number) => {
+                                  return (
+                                    <li key={index2} className="py-1">
+                                      <div
+                                        onClick={() =>
+                                          router.push(item2.attributes.url)
+                                        }
+                                        className=" font-medium text-sm text-black uppercase hover:text-orange-500 cursor-pointer"
+                                      >
+                                        {item2.attributes.title}
+                                      </div>
+                                    </li>
+                                  );
+                                }
+                              )}
+                            </ul>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </div>
+                </>
               );
             })}
           </>
