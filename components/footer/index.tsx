@@ -9,11 +9,11 @@ const Footer = ({ footer }: any) => {
     <footer className="site-footer shadow-teal-500">
       <div className="container">
         <div className="site-footer__top">
-          <div className="site-footer__description">
+          <div className="site-footer__description md:w-[33%] w-full ">
             <h6>
               <Logo />
             </h6>
-            <p>{footer?.description}</p>
+            <p className="text-black"> {footer?.description}</p>
             <ul className="site-footer__social-networks">
               <ul className="site-footer__social-networks">
                 {footer.ListSocial.map((item: any, index: number) => {
@@ -31,14 +31,14 @@ const Footer = ({ footer }: any) => {
                 })}
               </ul>
             </ul>
-            <p className="pt-6">{footer?.address}</p>
+            <p className="pt-6 text-black">{footer?.address}</p>
           </div>
 
-          <div className="site-footer__links">
+          <div className="site-footer__links grid grid-cols-2 gap-2 ">
             {footer.items.map((item: any, index: number) => {
               return (
-                <ul key={index}>
-                  <li>{item.Name}</li>
+                <ul key={index} className="w-full">
+                  <li className="text-xl">{item.Name}</li>
                   {item.SubItem.map((item2: any, index: number) => {
                     return (
                       <li key={index}>
@@ -63,7 +63,7 @@ const Footer = ({ footer }: any) => {
         </div>
       </div>
 
-      <div className="site-footer__bottom">
+      <div className="site-footer__bottom text-black">
         <div className="container">
           <p>DESIGN BY ThanhPhat - © 2023. ALL RIGHTS RESERVED.</p>
         </div>

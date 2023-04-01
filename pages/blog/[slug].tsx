@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { getBlogsDetail } from "utils/api";
 import Layout from "../../layouts/Main";
 import Breadcrumb from "components/breadcrumb";
+import { URL } from "utils/env";
 // import Reviews from '../../components/product-single/reviews';
 
 // types
-const REACT_IMAGE_BASE_URL = "http://localhost:1337";
+// const REACT_IMAGE_BASE_URL = "http://localhost:1337";
 const Blog = () => {
   const [detail, setDetail] = useState<any>();
   const router = useRouter();
@@ -42,7 +43,7 @@ const Blog = () => {
                     transformImageUri={(uri) =>
                       uri.startsWith("http")
                         ? uri
-                        : `${REACT_IMAGE_BASE_URL}${uri}`
+                        : `${URL}${uri}`
                     }
                   />
                 )}
@@ -50,7 +51,7 @@ const Blog = () => {
                   <video className="w-[80%] mx-auto" controls>
                     <source
                       src={
-                        process.env.NEXT_PUBLIC_URL + item.video.data.attributes.url
+                        process.env.NEXT_PUBLIC_URL + item.video.data?.attributes.url
                       }
                       type={item.video.data.attributes.mime}
                     />

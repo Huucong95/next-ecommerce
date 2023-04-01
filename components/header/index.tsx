@@ -67,7 +67,7 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
         </Link>
         <nav
           ref={navRef}
-          className={`site-nav md:flex ${menuOpen ? "site-nav--open" : ""}`}
+          className={`site-nav flex flex-col pt-2 md:pt-0 md:flex-row gap-3 md:flex ${menuOpen ? "site-nav--open" : ""}`}
         >
           <>
             {menus?.map((item: any, index: number) => {

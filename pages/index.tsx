@@ -3,7 +3,6 @@ import { GetServerSideProps } from "next";
 
 import PageIntro from "../components/page-intro";
 import ProductsFeatured from "../components/products-featured";
-import Subscribe from "../components/subscribe";
 import Blogs from "../components/blog";
 import {
   getBlogsIndex,
@@ -11,6 +10,7 @@ import {
   getProductHot,
   getProductNew,
 } from "../utils/api";
+import Head from "next/head";
 export const getServerSideProps: GetServerSideProps = async ({}) => {
   // const slug = query.slug;
   const resBlog = await getBlogsIndex();
@@ -23,9 +23,8 @@ export const getServerSideProps: GetServerSideProps = async ({}) => {
 
   const resHome = await getIndex();
   const banner = await resHome.banner;
+  const seo = await resHome.SEO;
   const featureds = await resHome.featureds;
-  const footerBanner = await resHome.BannerFooter;
-  const WhyChooseUs = await resHome.WhyChooseUs;
 
   return {
     props: {
@@ -34,8 +33,7 @@ export const getServerSideProps: GetServerSideProps = async ({}) => {
       productNew,
       banner,
       featureds,
-      footerBanner,
-      WhyChooseUs,
+      seo,
     },
   };
 };
@@ -46,14 +44,39 @@ const IndexPage = ({
   productNew,
   banner,
   featureds,
-  footerBanner,
-  WhyChooseUs,
+  seo,
 }: any) => {
-  console.log(WhyChooseUs);
+  console.log(seo);
 
   return (
     <Layout>
-      <PageIntro banner={banner} footerBanner={footerBanner} />
+      <Head>
+        <title>{seo.metaTitle}</title>
+        <meta
+          name="viewport"
+          content="viewport-fit=cover width=device-width, initial-scale=1"
+        />
+        <meta name="keywords" content={seo?.metaKeywords || ""}></meta>
+        <meta name="description" content={seo?.metaDescription || ""}></meta>
+        <meta property="og:title" content={seo?.metaTitle || ""} />
+        <meta charSet="utf-8"></meta>
+      </Head>
+      <PageIntro banner={banner} />
+      {productHot && (
+        <ProductsFeatured
+          title={"Sản phẩm bán chạy"}
+          products={productHot}
+          slug={"san-pham-ban-chay"}
+        />
+      )}
+      {productNew && (
+        <ProductsFeatured
+          title={"Sản phẩm mới"}
+          products={productNew}
+          slug={"san-pham-moi"}
+        />
+      )}
+      <Blogs blogs={blogs} />
 
       <section className="featured">
         <div className="container">
@@ -79,22 +102,7 @@ const IndexPage = ({
           })}
         </div>
       </section>
-      {productHot && (
-        <ProductsFeatured
-          title={"Sản phẩm bán chạy"}
-          products={productHot}
-          slug={"san-pham-ban-chay"}
-        />
-      )}
-      {productNew && (
-        <ProductsFeatured
-          title={"Sản phẩm mới"}
-          products={productNew}
-          slug={"san-pham-moi"}
-        />
-      )}
-      <Blogs blogs={blogs} />
-      <section className="section">
+      {/* <section className="section">
         <div className="container">
           <header className="section__intro">
             <h4>Tại sao bạn nên chọn chúng tôi?</h4>
@@ -104,7 +112,6 @@ const IndexPage = ({
             {WhyChooseUs.items.map((item: any, index: any) => {
               return (
                 <li key={index}>
-                  {/* <i className="icon-shipping"></i> */}
                   <div className="hover:bg-[#fff3df] flex justify-center items-center h-16 w-16 cursor-pointer rounded-md mx-2">
                     <img
                       className="w-8 h-8  "
@@ -124,7 +131,7 @@ const IndexPage = ({
           </ul>
         </div>
       </section>
-      <Subscribe />
+      <Subscribe /> */}
     </Layout>
   );
 };

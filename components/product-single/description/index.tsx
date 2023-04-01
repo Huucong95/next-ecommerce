@@ -20,13 +20,13 @@ const Description = ({content}:any) => {
                     }
                   />
                 )}
-                {item.__component === "content.video" && (
-                  <video className="w-[80%] mx-auto" controls>
+                {item.__component === "content.video" && item.video.data && (
+                  <video className="h-[100vh] w-full flex justify-center" controls>
                     <source
                       src={
-                        process.env.NEXT_PUBLIC_URL + item.video.data.attributes.url
+                        process.env.NEXT_PUBLIC_URL + item.video.data?.attributes.url
                       }
-                      type={item.video.data.attributes.mime}
+                      type={item.video.data?.attributes.mime}
                     />
                   </video>
                 )}

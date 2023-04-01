@@ -1,11 +1,13 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { EffectFade, Navigation } from "swiper";
+import { useRouter } from "next/router";
 
 SwiperCore.use([EffectFade, Navigation]);
 
-const PageIntro = ({ banner, footerBanner }: any) => {
+const PageIntro = ({ banner }: any) => {
+  const router = useRouter()
   return (
-    <section className="page-intro">
+    <section className="page-intro pb-8 md:pb-20">
       <Swiper navigation effect="fade" className="swiper-wrapper">
         {banner?.items?.map((item: any, index: number) => {
           return (
@@ -17,12 +19,16 @@ const PageIntro = ({ banner, footerBanner }: any) => {
                 }}
               >
                 <div className="container">
-                  <div className="page-intro__slide__content">
-                    <h2>{item.title}</h2>
-                    <a href="#" className="btn-shop">
-                      <i className="icon-right"></i>
-                      {item.nameButton}
-                    </a>
+                  <div className="flex flex-col gap-12">
+                    <div className="text-xl md:text-5xl ">
+                      <h2 className="text-white">{item.title}</h2>
+                    </div>
+                    <div className="block" onClick={() => {router.push(item.urlButton)}}>
+                      <div className="text-white cursor-pointer">
+                        <i className="icon-right bg-orange-600 text-white p-2 rounded-full mr-2"></i>
+                        {item.nameButton}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -31,13 +37,12 @@ const PageIntro = ({ banner, footerBanner }: any) => {
         })}
       </Swiper>
 
-      <div className="shop-data">
+      {/* <div className="shop-data">
         <div className="container">
           <ul className="shop-data__items">
             {footerBanner.items.map((item: any, index: any) => {
               return (
                 <li className="flex justify-center items-center" key={index}>
-                  {/* <i className="icon-shipping"></i> */}
                   <div className="bg-[#fff3df] flex justify-center items-center h-8 w-8 rounded-md mx-2">
                     <img
                       className="w-4 h-4  "
@@ -57,7 +62,7 @@ const PageIntro = ({ banner, footerBanner }: any) => {
             })}
           </ul>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

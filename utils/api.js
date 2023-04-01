@@ -87,6 +87,12 @@ export async function getMenus() {
   return menus?.data;
 }
 
+export async function getContact() {
+  const contact = await fetchAPI("/contact", {
+    populate: "*",
+  });
+  return contact;
+}
 export async function getIndex() {
   const index = await fetchAPI("/home", {
     populate: {
@@ -104,20 +110,27 @@ export async function getIndex() {
           },
         },
       },
-      BannerFooter: {
+      SEO: {
         populate: {
           items: {
             populate: "*",
           },
         },
       },
-      WhyChooseUs: {
-        populate: {
-          items: {
-            populate: "*",
-          },
-        },
-      },
+      // BannerFooter: {
+      //   populate: {
+      //     items: {
+      //       populate: "*",
+      //     },
+      //   },
+      // },
+      // WhyChooseUs: {
+      //   populate: {
+      //     items: {
+      //       populate: "*",
+      //     },
+      //   },
+      // },
     },
   });
   return index?.data.attributes;
