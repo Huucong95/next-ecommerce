@@ -32,9 +32,7 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
   // }
   const [showMenu, setShowMenu] = useState(false);
 
-  function handleClick() {
-    setShowMenu(!showMenu);
-  }
+
 
   useEffect(() => {
     if (!arrayPaths.includes(router.pathname) || isErrorPage) {
