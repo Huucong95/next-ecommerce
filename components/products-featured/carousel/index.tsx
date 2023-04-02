@@ -3,9 +3,10 @@ import { ProductTypeList } from "types";
 import "swiper/css/navigation";
 // import Swiper core and required components
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { EffectFade, Navigation } from "swiper";
+import SwiperCore, { EffectFade, Navigation,Grid } from "swiper";
+import "swiper/css";
 
-SwiperCore.use([EffectFade, Navigation]);
+SwiperCore.use([EffectFade, Navigation,Grid]);
 type ProductsCarouselType = {
   products: ProductTypeList[];
 };
@@ -18,11 +19,15 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
       <Swiper
         slidesPerView={4}
         spaceBetween={1}
+        grid={{
+          rows: 2,
+        }}
         navigation
         breakpoints={{
           "@0.00": {
             slidesPerView: 2,
             spaceBetween: 10,
+            
           },
           "@0.75": {
             slidesPerView: 3,
@@ -37,7 +42,7 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
             spaceBetween: 10,
           },
         }}
-        modules={[Navigation]}
+        modules={[Navigation,Grid]}
         className="swiper-wrapper  "
       >
         {products.map((item: any, index: number) => (
@@ -58,6 +63,7 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
           </SwiperSlide>
         ))}
       </Swiper>
+  
     </div>
   );
 };

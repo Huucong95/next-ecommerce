@@ -77,7 +77,7 @@ const IndexPage = ({
         />
       )}
 
-      <section className="featured">
+      <section className="featured hidden md:block">
         <div className="container">
           {featureds?.items?.map((item: any, index: number) => {
             return (

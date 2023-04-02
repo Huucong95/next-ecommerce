@@ -15,7 +15,6 @@ const Blogs = ({ blogs }: any) => {
             Bài viết mới
           </Link>
         </div>
-      
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
@@ -35,11 +34,11 @@ const Blogs = ({ blogs }: any) => {
                   />
                   <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
                   <Link
-                    href={`/danh-muc-blog/${item.attributes?.blog_category_child?.data.attributes.slug}`}
+                    href={`/danh-muc-blog/${item?.attributes?.blog_category_child?.data?.attributes?.slug}`}
                   >
                     <div className="text-xs absolute top-0 right-0 bg-orange-600 px-4 py-2 text-white mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
                       {
-                        item.attributes?.blog_category_child?.data.attributes
+                        item.attributes?.blog_category_child?.data?.attributes
                           .name
                       }
                     </div>
