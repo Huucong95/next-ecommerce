@@ -9,13 +9,22 @@ const Footer = ({ footer }: any) => {
     <footer className="site-footer shadow-teal-500">
       <div className="container">
         <div className="site-footer__top">
-          <div className="site-footer__description md:w-[33%] w-full ">
+          <div className="site-footer__description md:w-[80%] w-full ">
             <h6 className="w-32">
               <Logo />
             </h6>
-            <p className="text-black"> {footer?.description}</p>
+            <p className="text-black pb-4 text-xl"> {footer?.description}</p>
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTP.dung.cu.nong.nghiep&tabs&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+              width="340"
+              height="130"
+              style={{ border: "none", overflow: "hidden" }}
+              scrolling="no"
+              frameBorder="0"
+              // allowFullScreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            ></iframe>
 
-            <div className="fb-page" data-href="https://www.facebook.com/TP.dung.cu.nong.nghiep" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/TP.dung.cu.nong.nghiep" className="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/TP.dung.cu.nong.nghiep">Thành Phát - Bạn nhà nông</a></blockquote></div>
             <ul className="site-footer__social-networks">
               <ul className="site-footer__social-networks">
                 {footer.ListSocial.map((item: any, index: number) => {
@@ -33,13 +42,13 @@ const Footer = ({ footer }: any) => {
                 })}
               </ul>
             </ul>
-            <p className="pt-6 text-black">{footer?.address}</p>
+            {/* <p className="pt-6 text-black">{footer?.address}</p> */}
           </div>
 
-          <div className="site-footer__links grid grid-cols-2 gap-2 ">
+          <div className="site-footer__links grid grid-cols-2 gap-2  justify-center">
             {footer.items.map((item: any, index: number) => {
               return (
-                <ul key={index} className="w-full">
+                <ul key={index} className="w-full  ">
                   <li className="text-xl">{item.Name}</li>
                   {item.SubItem.map((item2: any, index: number) => {
                     return (
@@ -70,14 +79,6 @@ const Footer = ({ footer }: any) => {
           <p>DESIGN BY ThanhPhat - © 2023. ALL RIGHTS RESERVED.</p>
         </div>
       </div>
-      <div id="fb-root"></div>
-              <script
-                async
-                defer
-                crossOrigin="anonymous"
-                src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v16.0"
-                nonce="JXSdhVsx"
-              ></script>
     </footer>
   );
 };

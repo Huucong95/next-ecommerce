@@ -9,26 +9,34 @@ import Description from "../../components/product-single/description";
 // import Reviews from '../../components/product-single/reviews';
 
 // types
-import { getProduct } from "utils/api";
+import { getFeaturedProducts, getProduct } from "utils/api";
 import { ProductStoreType } from "types";
 import { useDispatch } from "react-redux";
 import { addProduct } from "store/reducers/cart";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Link from "next/link";
+import ProductsFeatured from "components/products-featured";
+import { formatMoney } from "utils/format";
+import { URL } from "utils/env";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const slug = query.slug;
   const res = await getProduct(slug);
   const product = await res[0].attributes;
+  const products = await getFeaturedProducts();
 
   return {
     props: {
       product,
+      products,
     },
   };
 };
 
-const Product = ({ product }: any) => {
+const Product = ({ product, products }: any) => {
+  console.log(products);
+
   const router = useRouter();
 
   const dispatch = useDispatch();
@@ -52,7 +60,7 @@ const Product = ({ product }: any) => {
     dispatch(addProduct(productStore));
   };
   console.log(product);
-  
+
   return (
     <Layout>
       <Head>
@@ -62,7 +70,10 @@ const Product = ({ product }: any) => {
           content="viewport-fit=cover width=device-width, initial-scale=1"
         />
         <meta name="keywords" content={product.SEO?.metaKeywords || ""}></meta>
-        <meta name="description" content={product.SEO?.metaDescription || ""}></meta>
+        <meta
+          name="description"
+          content={product.SEO?.metaDescription || ""}
+        ></meta>
         <meta property="og:title" content={product.SEO?.metaTitle || ""} />
         <meta charSet="utf-8"></meta>
       </Head>
@@ -78,27 +89,70 @@ const Product = ({ product }: any) => {
                 <Content product={product} />
               </div>
 
-              <div className="product-single__info">
-                <div className="product-single__info-btns">
-                  <button
-                    type="button"
-                    className={`btn btn--rounded btn--active`}
-                  >
-                    Thông tin sản phẩm
-                  </button>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-4">
+                <div className="product-single__info md:col-span-3">
+                  <div className="product-single__info-btns">
+                    <button
+                      type="button"
+                      className={`btn btn--rounded btn--active`}
+                    >
+                      Thông tin sản phẩm
+                    </button>
+                  </div>
 
-                <Description content={product.Content} />
-                <div className="flex justify-center w-full">
-                  <button
-                    onClick={() => {
-                      addToCart();
-                      router.push("/gio-hang");
-                    }}
-                    className="mt-12   mx-auto  btn btn--rounded btn--yellow "
-                  >
-                    Đặt hàng
-                  </button>
+                  <Description content={product.Content} />
+                  <div className="flex justify-center w-full">
+                    <button
+                      onClick={() => {
+                        addToCart();
+                        router.push("/gio-hang");
+                      }}
+                      className=" rounded-2xl bg-orange-400  font-bold text-white mt-12 px-24 py-4"
+                    >
+                      Đặt hàng
+                    </button>
+                  </div>
+                </div>
+                <div className="mt-12 md:mt-0">
+                  <div>
+                    <div
+                      className="hidden md:flex text-orange-600 font-medium  items-center pb-2 pr-2 uppercase"
+                      style={{ borderBottom: "3px solid rgb(249 115 22)" }}
+                    >
+                      <Link href="#" className="font-semibold inline-block ">
+                        <a>Sản phẩm nổi bật</a>
+                      </Link>
+                    </div>
+                    <ul className="checkout-items mt-2">
+                      {products.map((item:any, index:number) => (
+                        <li onClick={() => {
+                          router.push("/san-pham/"+item.attributes.slug)
+                        }} className="checkout-item " key={index}>
+                          <div className="checkout-item__content">
+                            <div className="checkout-item__img2 ">
+                              <img src={URL + item.attributes.image.data.attributes.url} />
+                            </div>
+
+                            <div className="checkout-item__data">
+                              <h3>
+                                {item.attributes.title}
+                              </h3>
+                            </div>
+                          </div>
+                          <div className="text-orange-500 text-sm">{formatMoney(item.attributes.price)}đ</div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="md:hidden">
+                    {products && (
+                      <ProductsFeatured
+                        title={"Sản phẩm nổi bật"}
+                        products={products}
+                        slug={"san-pham-noi-bat"}
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

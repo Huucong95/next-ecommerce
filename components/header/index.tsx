@@ -32,8 +32,6 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
   // }
   // const [showMenu, setShowMenu] = useState(false);
 
-
-
   useEffect(() => {
     if (!arrayPaths.includes(router.pathname) || isErrorPage) {
       return;
@@ -77,7 +75,7 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
           <>
             {menus?.map((item: any, index: number) => {
               return (
-                <>
+                <div key={index}>
                   <div
                     className="hidden md:block group relative dropdown  px-4 text-black hover:text-orange-500 cursor-pointer font-bold text-base uppercase tracking-wide"
                     key={index}
@@ -230,7 +228,7 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
                       </>
                     )}
                   </div>
-                </>
+                </div>
               );
             })}
           </>
@@ -241,6 +239,11 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
         </nav>
 
         <div className="site-header__actions">
+          <div className=" md:mr-36">
+            <a href="tel:0938841286">
+              <span className="text-xs md:text-xl text-orange-500 md:font-bold"> Hotline: 0938841286</span>
+            </a>
+          </div>
           {/* <button
             ref={searchRef}
             className={`search-form-wrapper ${

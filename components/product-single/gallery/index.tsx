@@ -5,8 +5,8 @@ const Gallery = ({ images, image }: any) => {
   const [featImage, setFeatImage] = useState(image?.data.attributes.url);
 
   return (
-    <section className="product-gallery ">
-      <div className="product-gallery__thumbs">
+    <section className="product-gallery flex flex-col-reverse md:flex-row gap-2">
+      <div className="product-gallery__thumbs flex w-full overflow-x-scroll md:overflow-x-hidden gap-2 ">
         {images?.data?.map((item: any, index: number) => {
           return (
             <div

@@ -237,6 +237,26 @@ export async function getProductNew() {
   });
   return index?.data;
 }
+export async function getFeaturedProducts() {
+  const index = await fetchAPI("/products", {
+    pagination: {
+      page: 1,
+      pageSize: 5,
+    },
+    filters: {
+      category_children: {
+        slug: {
+          $eq: "san-pham-noi-bat",
+        },
+      },
+    },
+    // populate: {
+
+    // },
+    populate: "*",
+  });
+  return index?.data;
+}
 export async function getProducts(slug, query) {
   const index = await fetchAPI("/products",query);
   return index;

@@ -4,15 +4,14 @@ import { useState } from "react";
 // import CheckboxColor from './../../products-filter/form-builder/checkbox-color';
 import { useDispatch } from "react-redux";
 import { addProduct } from "store/reducers/cart";
-import {  ProductStoreType } from "types";
+import { ProductStoreType } from "types";
 import { formatMoney } from "utils/format";
 import { toast } from "react-toastify";
-
 
 const Content = ({ product }: any) => {
   const dispatch = useDispatch();
   const [count, setCount] = useState<number>(1);
-  
+
   // const [color, setColor] = useState<string>('');
   // const [itemSize, setItemSize] = useState<string>('');
 
@@ -34,7 +33,7 @@ const Content = ({ product }: any) => {
     };
 
     dispatch(addProduct(productStore));
-    toast.success("Thêm vào giỏ hàng thành công")
+    toast.success("Thêm vào giỏ hàng thành công");
   };
 
   return (
@@ -46,8 +45,13 @@ const Content = ({ product }: any) => {
         <div className="product__prices">
           <h4>{formatMoney(product.price)}đ</h4>
           {product.OriginalPrice && (
-            <span className="line-through">{formatMoney(product.OriginalPrice)}đ</span>
+            <span className="line-through">
+              {formatMoney(product.OriginalPrice)}đ
+            </span>
           )}
+        </div>
+        <div>
+          <div className="text-black mt-4">{product.description}</div>
         </div>
       </div>
 
@@ -78,7 +82,7 @@ const Content = ({ product }: any) => {
               onClick={() => addToCart()}
               className="btn btn--rounded btn--yellow "
             >
-              Thêm giỏ hàng
+              Đặt hàng
             </button>
           </div>
         </div>

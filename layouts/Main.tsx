@@ -46,6 +46,12 @@ export default ({ children, title = "Nông cụ " }: LayoutType) => {
     <div className="app-main">
       <Head>
         <title>{title}</title>
+        <script
+          async
+          defer
+          src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0"
+          nonce="tWOMje7w"
+        ></script>
       </Head>
       {categories && <Header menus={menus} categories={categories} />}
 

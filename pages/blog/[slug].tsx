@@ -25,14 +25,16 @@ const Blog = () => {
       fetchBlogDetail(slug);
     }
   }, [slug]);
-// console.log(detail);
+  // console.log(detail);
 
   return (
     <Layout>
       {detail && detail.attributes.SEO && (
         <Head>
           <title>
-            {detail.attributes?.SEO?.metaTitle ? detail.attributes?.SEO?.metaTitle : "Nông cụ"}
+            {detail.attributes?.SEO?.metaTitle
+              ? detail.attributes?.SEO?.metaTitle
+              : "Nông cụ"}
           </title>
           <meta
             name="viewport"
@@ -46,7 +48,10 @@ const Blog = () => {
             name="description"
             content={detail.attributes?.SEO?.metaDescription || ""}
           ></meta>
-          <meta property="og:title" content={detail.attributes?.SEO?.metaTitle || ""} />
+          <meta
+            property="og:title"
+            content={detail.attributes?.SEO?.metaTitle || ""}
+          />
           <meta charSet="utf-8"></meta>
         </Head>
       )}
@@ -70,15 +75,7 @@ const Blog = () => {
                   />
                 )}
                 {item.__component === "content.video" && (
-                  <video className="w-[80%] mx-auto" controls>
-                    <source
-                      src={
-                        process.env.NEXT_PUBLIC_URL +
-                        item.video.data?.attributes.url
-                      }
-                      type={item.video.data.attributes.mime}
-                    />
-                  </video>
+                  <div dangerouslySetInnerHTML={{ __html: item.Youtube }}></div>
                 )}
               </div>
             );
