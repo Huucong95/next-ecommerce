@@ -137,6 +137,10 @@ export async function getIndex() {
 }
 export async function getBlogsIndex() {
   const index = await fetchAPI("/blogs", {
+    pagination: {
+      page: 1,
+      pageSize: 3,
+    },
     populate: {
       banner: {
         populate: {

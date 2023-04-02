@@ -4,12 +4,12 @@ import { useRouter } from "next/router";
 import { getCategory, getFooter, getMenus } from "../utils/api";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
+import FacebookChat from "../components/chat"
 import Footer from "components/footer";
 type LayoutType = {
   title?: string;
   children?: React.ReactNode;
 };
-
 export default ({ children, title = "Nông cụ " }: LayoutType) => {
   const router = useRouter();
   const [menus, setMenus] = useState(null);
@@ -57,6 +57,7 @@ export default ({ children, title = "Nông cụ " }: LayoutType) => {
 
       <main className={pathname !== "/" ? "main-page" : ""}>{children}</main>
       <Loading show={show} />
+      <FacebookChat />
       {footer && <Footer footer={footer} />}
     </div>
   );
