@@ -20,17 +20,15 @@ body {
   //   display: none;
   // }
 }
-html,
-.h_iframe {
-  iframe {
-    width: 100% !important;
-    height: 550px !important;
-  }
-}
 .h_iframe {
   height: 100% !important;
   width: 100% !important;
+  iframe {
+    width: 100% !important;
+    height: 550px ;
+  }
 }
+
 
 .wrapper-loading {
   position: fixed;
