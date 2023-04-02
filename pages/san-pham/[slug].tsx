@@ -15,10 +15,10 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "store/reducers/cart";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Link from "next/link";
+// import Link from "next/link";
 import ProductsFeatured from "components/products-featured";
-import { formatMoney } from "utils/format";
-import { URL } from "utils/env";
+// import { formatMoney } from "utils/format";
+// import { URL } from "utils/env";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const slug = query.slug;
