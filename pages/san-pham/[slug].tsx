@@ -107,7 +107,7 @@ const Product = ({ product, products }: any) => {
                         addToCart();
                         router.push("/gio-hang");
                       }}
-                      className=" rounded-2xl bg-orange-400  font-bold text-white mt-12 px-24 py-4"
+                      className=" rounded-2xl text-2xl bg-orange-400  font-bold text-white mt-12 px-24 py-4"
                     >
                       Đặt hàng
                     </button>
