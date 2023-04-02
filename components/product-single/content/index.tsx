@@ -7,9 +7,11 @@ import { addProduct } from "store/reducers/cart";
 import { ProductStoreType } from "types";
 import { formatMoney } from "utils/format";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const Content = ({ product }: any) => {
   const dispatch = useDispatch();
+  const router = useRouter()
   const [count, setCount] = useState<number>(1);
 
   // const [color, setColor] = useState<string>('');
@@ -79,7 +81,10 @@ const Content = ({ product }: any) => {
 
             <button
               type="submit"
-              onClick={() => addToCart()}
+              onClick={() => {
+                addToCart();
+                router.push("/gio-hang");
+              }}
               className="btn btn--rounded btn--yellow "
             >
               Đặt hàng

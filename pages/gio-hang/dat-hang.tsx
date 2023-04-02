@@ -29,13 +29,13 @@ const CheckoutPage = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    note: "",
     phone: "",
     address: "",
   });
   const [formDataErr, setFormDataErr] = useState({
     name: "",
-    email: "",
+    note: "",
     phone: "",
     address: "",
   });
@@ -44,7 +44,7 @@ const CheckoutPage = () => {
     const isValid = validateForm();
     const data = {
       name: formData.name,
-      email: formData.email,
+      note: formData.note,
       phone: formData.phone,
       address: formData.address,
       productItems: carts.map((item) => {
@@ -66,7 +66,7 @@ const CheckoutPage = () => {
         dispatch(clearCart());
         setFormData({
           name: "",
-          email: "",
+          note: "",
           phone: "",
           address: "",
         });
@@ -85,7 +85,7 @@ const CheckoutPage = () => {
   const validateForm = () => {
     let errors = {
       name: "",
-      email: "",
+      note: "",
       phone: "",
       address: "",
     };
@@ -96,13 +96,13 @@ const CheckoutPage = () => {
       isValid = false;
     }
 
-    if (!formData.email) {
-      errors.email = "Email không được để trống";
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Email không hợp lệ";
-      isValid = false;
-    }
+    // if (!formData.note) {
+    //   errors.email = "Email không được để trống";
+    //   isValid = false;
+    // } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    //   errors.email = "Email không hợp lệ";
+    //   isValid = false;
+    // }
 
     if (!formData.phone) {
       errors.phone = "Số điện thoại không được để trống";
@@ -154,22 +154,6 @@ const CheckoutPage = () => {
                         />
                         <div className="text-red-500">{formDataErr.name} </div>
                       </div>
-
-                      <div className="form__col">
-                        <input
-                          value={formData.email}
-                          onChange={(e) =>
-                            setFormData({ ...formData, email: e.target.value })
-                          }
-                          className="form__input form__input--sm"
-                          type="email"
-                          placeholder="Email"
-                        />
-                        <div className="text-red-500">{formDataErr.email} </div>
-                      </div>
-                    </div>
-
-                    <div className="form__input-row form__input-row--two">
                       <div className="form__col">
                         <input
                           value={formData.phone}
@@ -182,6 +166,9 @@ const CheckoutPage = () => {
                         />
                         <div className="text-red-500">{formDataErr.phone} </div>
                       </div>
+                    </div>
+
+                    <div className="form__input-row form__input-row">
                       <div className="form__col">
                         <input
                           value={formData.address}
@@ -198,6 +185,22 @@ const CheckoutPage = () => {
                         <div className="text-red-500">
                           {formDataErr.address}{" "}
                         </div>
+                      </div>
+                    </div>
+
+                    <div className="form__input-row form__input-row">
+                      <div className="form__col">
+                        <textarea
+                          value={formData.note}
+                          onChange={(e) =>
+                            setFormData({ ...formData, note: e.target.value })
+                          }
+                          rows={6}
+                          cols={5}
+                          className="form__input textarea2"
+                          placeholder="Ghi chú"
+                        />
+                        {/* <div className="text-red-500">{formDataErr.email} </div> */}
                       </div>
                     </div>
                   </form>
@@ -267,13 +270,14 @@ const CheckoutPage = () => {
                   <p className="text-lg font-base mb-12">
                     Cảm ơn{" "}
                     <span className="text-black font-bold">{data.name} </span>{" "}
-                    đã đặt hàng tại website của chúng tôi, Chúng tôi sẽ liên lạc lại với bạn trong thời gian sớm nhất
+                    đã đặt hàng tại website của chúng tôi, Chúng tôi sẽ liên lạc
+                    lại với bạn trong thời gian sớm nhất
                   </p>
 
                   <div
-                  onClick={() => {
-                    router.push("/cua-hang")
-                  }}
+                    onClick={() => {
+                      router.push("/cua-hang");
+                    }}
                     className="group cursor-pointer relative inline-block h-12 w-full xs:w-60 bg-blueGray-900 rounded-md"
                   >
                     <div className="absolute top-0 left-0 transform -translate-y-1 -translate-x-1 w-full h-full group-hover:translate-y-0 group-hover:translate-x-0 transition duration-300">

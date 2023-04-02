@@ -25,7 +25,7 @@ const Footer = ({ footer }: any) => {
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             ></iframe>
 
-            <ul className="site-footer__social-networks">
+            {/* <ul className="site-footer__social-networks">
               <ul className="site-footer__social-networks">
                 {footer.ListSocial.map((item: any, index: number) => {
                   return (
@@ -41,7 +41,7 @@ const Footer = ({ footer }: any) => {
                   );
                 })}
               </ul>
-            </ul>
+            </ul> */}
             {/* <p className="pt-6 text-black">{footer?.address}</p> */}
           </div>
 

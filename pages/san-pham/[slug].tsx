@@ -89,8 +89,8 @@ const Product = ({ product, products }: any) => {
                 <Content product={product} />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-4">
-                <div className="product-single__info md:col-span-3">
+              <div className="grid grid-cols-1">
+                <div className="product-single__info">
                   <div className="product-single__info-btns">
                     <button
                       type="button"
@@ -113,53 +113,20 @@ const Product = ({ product, products }: any) => {
                     </button>
                   </div>
                 </div>
-                <div className="mt-12 md:mt-0">
-                  <div>
-                    <div
-                      className="hidden md:flex text-orange-600 font-medium  items-center pb-2 pr-2 uppercase"
-                      style={{ borderBottom: "3px solid rgb(249 115 22)" }}
-                    >
-                      <Link href="#" className="font-semibold inline-block ">
-                        <a>Sản phẩm nổi bật</a>
-                      </Link>
-                    </div>
-                    <ul className="checkout-items mt-2">
-                      {products.map((item:any, index:number) => (
-                        <li onClick={() => {
-                          router.push("/san-pham/"+item.attributes.slug)
-                        }} className="checkout-item " key={index}>
-                          <div className="checkout-item__content">
-                            <div className="checkout-item__img2 ">
-                              <img src={URL + item.attributes.image.data.attributes.url} />
-                            </div>
-
-                            <div className="checkout-item__data">
-                              <h3>
-                                {item.attributes.title}
-                              </h3>
-                            </div>
-                          </div>
-                          <div className="text-orange-500 text-sm">{formatMoney(item.attributes.price)}đ</div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="md:hidden">
-                    {products && (
-                      <ProductsFeatured
-                        title={"Sản phẩm nổi bật"}
-                        products={products}
-                        slug={"san-pham-noi-bat"}
-                      />
-                    )}
-                  </div>
-                </div>
               </div>
             </div>
           </section>
 
           <div className="product-single-page">
-            {/* <ProductsFeatured title={"Gợi ý cho bạn"} /> */}
+            <div className="">
+              {products && (
+                <ProductsFeatured
+                  title={"Sản phẩm nổi bật"}
+                  products={products}
+                  slug={"san-pham-noi-bat"}
+                />
+              )}
+            </div>
           </div>
           {/* <Footer /> */}
         </>

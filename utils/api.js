@@ -165,9 +165,9 @@ export async function getFooter() {
       items: {
         populate: "*",
       },
-      ListSocial: {
-        populate: "*",
-      },
+      // ListSocial: {
+      //   populate: "*",
+      // },
     },
   });
   return index?.data;
