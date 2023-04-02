@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 
 const Content = ({ product }: any) => {
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
   const [count, setCount] = useState<number>(1);
 
   // const [color, setColor] = useState<string>('');
@@ -79,17 +79,17 @@ const Content = ({ product }: any) => {
               </button>
             </div>
 
-            <button
-              type="submit"
+          
+          </div>
+          <button
               onClick={() => {
                 addToCart();
                 router.push("/gio-hang");
               }}
-              className="btn btn--rounded btn--yellow "
+              className=" rounded-2xl text-2xl bg-orange-400  font-bold text-white mt-12 px-24 py-4"
             >
               Đặt hàng
             </button>
-          </div>
         </div>
       </div>
     </section>

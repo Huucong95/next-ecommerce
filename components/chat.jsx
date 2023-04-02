@@ -25,7 +25,7 @@ const FacebookChat = () => {
     <div
       className="fb-customerchat"
       attribution="setup_tool"
-      page_id="100076087988203"
+      page_id="105270805333239"
       logged_in_greeting="Xin chào, Bạn cần tư vấn về sản phẩm nào ?"
       // logged_out_greeting="Hi! How can we help you?"
     ></div>
