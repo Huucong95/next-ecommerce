@@ -16,7 +16,7 @@ const FacebookChat = () => {
       if (d.getElementById(id)) return;
       js = d.createElement(s);
       js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+      js.src = "https://connect.facebook.net/vi_VN//sdk/xfbml.customerchat.js";
       fjs.parentNode.insertBefore(js, fjs);
     })(document, "script", "facebook-jssdk");
   }, []);
@@ -25,9 +25,9 @@ const FacebookChat = () => {
     <div
       className="fb-customerchat"
       attribution="setup_tool"
-      page_id="107823518650991"
-      logged_in_greeting="Hi! How can we help you?"
-      logged_out_greeting="Hi! How can we help you?"
+      page_id="100076087988203"
+      logged_in_greeting="Xin chào, Bạn cần tư vấn về sản phẩm nào ?"
+      // logged_out_greeting="Hi! How can we help you?"
     ></div>
   );
 };
