@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { URL } from "utils/env";
+// import { URL } from "utils/env";
 import Logo from "../../assets/icons/logo";
 
 const Footer = ({ footer }: any) => {
