@@ -3,10 +3,10 @@ import { ProductTypeList } from "types";
 import "swiper/css/navigation";
 // import Swiper core and required components
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { EffectFade, Navigation,Grid } from "swiper";
-import "swiper/css";
+import SwiperCore, { EffectFade, Navigation, Grid } from "swiper";
+import "swiper/css/grid";
 
-SwiperCore.use([EffectFade, Navigation,Grid]);
+SwiperCore.use([EffectFade, Navigation, Grid]);
 type ProductsCarouselType = {
   products: ProductTypeList[];
 };
@@ -19,30 +19,42 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
       <Swiper
         slidesPerView={4}
         spaceBetween={1}
-        grid={{
-          rows: 2,
-        }}
         navigation
         breakpoints={{
           "@0.00": {
             slidesPerView: 2,
             spaceBetween: 10,
-            
+            // grid: {
+            //   rows: 2,
+            //   fill: "row",
+            // },
           },
           "@0.75": {
             slidesPerView: 3,
             spaceBetween: 10,
+            // grid: {
+            //   rows: 2,
+            //   fill: "row",
+            // },
           },
           "@1.00": {
             slidesPerView: 3,
             spaceBetween: 10,
+            // grid: {
+            //   rows: 2,
+            //   fill: "row",
+            // },
           },
           "@1.50": {
             slidesPerView: 4,
             spaceBetween: 10,
+            // grid: {
+            //   rows: 2,
+            //   fill: "row",
+            // },
           },
         }}
-        modules={[Navigation,Grid]}
+        modules={[Navigation, Grid]}
         className="swiper-wrapper  "
       >
         {products.map((item: any, index: number) => (
@@ -57,13 +69,11 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
                 key={item.attributes.id}
                 image={item.attributes.image.data.attributes.url}
                 images={item.attributes.images.data}
-
               />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-  
     </div>
   );
 };
