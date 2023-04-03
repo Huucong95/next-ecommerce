@@ -43,7 +43,7 @@ const IndexPage = ({
   productHot,
   productNew,
   banner,
-  featureds,
+  // featureds,
   seo,
 }: any) => {
   console.log(seo);
