@@ -95,8 +95,15 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
                               {categories.map((item2: any, index2: number) => {
                                 return (
                                   <li key={index2} className="py-1">
-                                    <div className=" font-medium text-sm text-black uppercase  hover:text-orange-500 cursor-pointer">
-                                      <div className="text-black hover:text-black mb-4 border-bottom">
+                                    <div className="font-medium text-sm text-black uppercase  hover:text-orange-500 cursor-pointer">
+                                      <div
+                                        onClick={() =>
+                                          router.push(
+                                            "/cua-hang/" + item2.attributes.slug
+                                          )
+                                        }
+                                        className="text-black hover:text-black mb-4 border-bottom"
+                                      >
                                         {item2.attributes.name}
                                       </div>
                                       {item2.attributes.category_children?.data.map(
@@ -107,6 +114,8 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
                                               onClick={() =>
                                                 router.push(
                                                   "/cua-hang/" +
+                                                    item2.attributes.slug +
+                                                    "/" +
                                                     item3.attributes.slug
                                                 )
                                               }
@@ -167,12 +176,19 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
                       <>
                         {categories?.length > 0 && (
                           <div className="  h-auto  min-w-max ">
-                            <ul className="top-0 w-80 bg-white md:shadow px-6 md:py-8 md:flex gap-8 min-w-max">
+                            <ul className="top-0 w-80 bg-white md:shadow px-1 md:py-8 md:flex gap-8 min-w-max">
                               {categories.map((item2: any, index2: number) => {
                                 return (
                                   <li key={index2} className="py-1">
                                     <div className=" font-medium text-sm text-black uppercase  hover:text-orange-500 cursor-pointer">
-                                      <div className="text-black hover:text-black mb-4 border-bottom">
+                                      <div
+                                        onClick={() =>
+                                          router.push(
+                                            "/cua-hang/" + item2.attributes.slug
+                                          )
+                                        }
+                                        className="text-black hover:text-black mb-4 border-bottom"
+                                      >
                                         {item2.attributes.name}
                                       </div>
                                       {item2.attributes.category_children?.data.map(
@@ -183,6 +199,8 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
                                               onClick={() =>
                                                 router.push(
                                                   "/cua-hang/" +
+                                                    item2.attributes.slug +
+                                                    "/" +
                                                     item3.attributes.slug
                                                 )
                                               }
@@ -241,7 +259,10 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
         <div className="site-header__actions">
           <div className=" md:mr-36">
             <a href="tel:0938841286">
-              <span className="text-xs md:text-xl text-orange-500 md:font-bold"> Hotline: 0938841286</span>
+              <span className="text-xs md:text-xl text-orange-500 md:font-bold">
+                {" "}
+                Hotline: 0938841286
+              </span>
             </a>
           </div>
           {/* <button

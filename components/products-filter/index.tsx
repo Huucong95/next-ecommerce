@@ -7,7 +7,7 @@ import { getCategory } from "utils/api";
 
 const ProductsFilter = () => {
   const router = useRouter();
-  const {slug} = router.query
+  const { slug,slug2 } = router.query;
   const [categories, setCategories] = useState<any>(null);
   const getMenu = async () => {
     const res2 = await getCategory();
@@ -47,7 +47,18 @@ const ProductsFilter = () => {
               return (
                 <div key={index2} className="py-1">
                   <div className=" font-medium text-sm text-black   hover:text-orange-500 cursor-pointer">
-                    <div className="text-black hover:text-black mb-4 border-bottom py-2 font-semibold text-md">
+                    <div
+                      onClick={() =>
+                        router.push("/cua-hang/" + item2.attributes.slug)
+                      }
+                      className={`text-black pl-4 border-bottom py-2  font-semibold text-md mb-1 ${
+                        slug == item2.attributes.slug
+                          ? "text-orange-500"
+                          : "text-black"
+                      } hover:text-orange-500 pb-2`}
+
+                      //  className="text-black hover:text-black mb-4 border-bottom py-2 font-semibold text-md"
+                    >
                       {item2.attributes.name}
                     </div>
                     {item2.attributes.category_children?.data.map(
@@ -56,9 +67,18 @@ const ProductsFilter = () => {
                           <div
                             key={index3}
                             onClick={() =>
-                              router.push("/cua-hang/" + item3.attributes.slug)
+                              router.push(
+                                "/cua-hang/" +
+                                  item2.attributes.slug +
+                                  "/" +
+                                  item3.attributes.slug
+                              )
                             }
-                            className={`text-black pl-4 ${slug== item3.attributes.slug ?"text-orange-500":"text-black"} hover:text-orange-500 pb-2`}
+                            className={`text-black pl-4 ${
+                              slug2 == item3.attributes.slug
+                                ? "text-orange-500"
+                                : "text-black"
+                            } hover:text-orange-500 pb-2`}
                           >
                             {item3.attributes.name}
                           </div>

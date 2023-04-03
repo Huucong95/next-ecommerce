@@ -18,48 +18,60 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
     <div className="products-carousel">
       <Swiper
         slidesPerView={4}
-        spaceBetween={1}
-        navigation
+        grid={{
+          rows: 2,
+          fill: "row"
+        }}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        //  modules={[Grid, Pagination]}
+        className="mySwiper"
+        // slidesPerView={4}
+        // spaceBetween={10}
+        // navigation
+        // grid={{ fill: "row", rows: 2 }}
         breakpoints={{
           "@0.00": {
             slidesPerView: 2,
-            spaceBetween: 10,
-            // grid: {
-            //   rows: 2,
-            //   fill: "row",
-            // },
+            // spaceBetween: 2,
+            grid: {
+              rows: 2,
+              fill: "row",
+            },
           },
           "@0.75": {
-            slidesPerView: 3,
-            spaceBetween: 10,
-            // grid: {
-            //   rows: 2,
-            //   fill: "row",
-            // },
+            slidesPerView: 4,
+            // spaceBetween: 2,
+            grid: {
+              rows: 2,
+              fill: "row",
+            },
           },
           "@1.00": {
-            slidesPerView: 3,
-            spaceBetween: 10,
-            // grid: {
-            //   rows: 2,
-            //   fill: "row",
-            // },
+            slidesPerView: 4,
+            // spaceBetween: 2,
+            grid: {
+              rows: 2,
+              fill: "row",
+            },
           },
           "@1.50": {
             slidesPerView: 4,
-            spaceBetween: 10,
-            // grid: {
-            //   rows: 2,
-            //   fill: "row",
-            // },
+            // spaceBetween: 2,
+            grid: {
+              rows: 2,
+              fill: "row",
+            },
           },
         }}
         modules={[Navigation, Grid]}
-        className="swiper-wrapper  "
+        // className="swiper-wrapper  "
       >
         {products.map((item: any, index: number) => (
-          <SwiperSlide key={index} className="flex items-stretch">
-            <div className="h-full w-full px-2 py-4">
+          <SwiperSlide key={index} className="swiper-slide flex items-stretch">
+            <div className="h-full w-full py-4">
               <ProductItem
                 id={item.attributes.slug}
                 name={item.attributes.title}

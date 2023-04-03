@@ -205,7 +205,7 @@ export async function getBlogsDetail(slug) {
   );
   return index?.data;
 }
-export async function getBlogsCategoryChild(slug, query) {
+export async function getBlogsCategory(slug, query) {
   const index = await fetchAPI(`/blogs`, query);
   return index;
 }

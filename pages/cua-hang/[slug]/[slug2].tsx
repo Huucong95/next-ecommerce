@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { getProducts } from "utils/api";
 
-import Layout from "../../layouts/Main";
+import Layout from "../../../layouts/Main";
 import Breadcrumb from "components/breadcrumb";
 import ProductsFilter from "components/products-filter";
 import ProductsContent from "components/products-content";
@@ -10,7 +10,7 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { Pagination } from "antd";
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const slug = query.slug;
+  const slug = query.slug2;
   let data = null;
   data = await getProducts(slug, {
     pagination: {
@@ -41,9 +41,9 @@ const Products = ({ data }: any) => {
   const total = data.meta.pagination.total;
 
   const router = useRouter();
-  const { slug } = router.query;
+  const { slug2 } = router.query;
   const onChange = async (e: any) => {
-    const res = await getProducts(slug, {
+    const res = await getProducts(slug2, {
       pagination: {
         page: e,
         pageSize: 9,
@@ -51,7 +51,7 @@ const Products = ({ data }: any) => {
       filters: {
         blog_category_child: {
           slug: {
-            $eq: slug,
+            $eq: slug2,
           },
         },
       },
@@ -61,7 +61,7 @@ const Products = ({ data }: any) => {
   };
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getProducts(slug, {
+      const result = await getProducts(slug2, {
         pagination: {
           page: 1,
           pageSize: 9,
@@ -69,7 +69,7 @@ const Products = ({ data }: any) => {
         filters: {
           category_children: {
             slug: {
-              $eq: slug,
+              $eq: slug2,
             },
           },
         },
@@ -79,7 +79,7 @@ const Products = ({ data }: any) => {
       setDetail(result.data);
     };
     fetchData();
-  }, [slug]);
+  }, [slug2]);
   return (
     <Layout>
       <Head>{/* <title></title> */}</Head>
