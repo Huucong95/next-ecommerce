@@ -30,7 +30,7 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
         className="mySwiper"
         // slidesPerView={4}
         // spaceBetween={10}
-        // navigation
+        navigation
         // grid={{ fill: "row", rows: 2 }}
         breakpoints={{
           "@0.00": {
@@ -67,7 +67,7 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
           },
         }}
         modules={[Navigation, Grid]}
-        // className="swiper-wrapper  "
+        // className="swiper-wrapper"
       >
         {products.map((item: any, index: number) => (
           <SwiperSlide key={index} className="swiper-slide flex items-stretch">
