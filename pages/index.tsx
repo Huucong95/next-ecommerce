@@ -77,7 +77,7 @@ const IndexPage = ({
         />
       )}
 
-      <section className="featured hidden md:block">
+      {/* <section className="featured hidden md:block">
         <div className="container">
           {featureds?.items?.map((item: any, index: number) => {
             return (
@@ -100,7 +100,7 @@ const IndexPage = ({
             );
           })}
         </div>
-      </section>
+      </section> */}
       <Blogs blogs={blogs} />
 
       {/* <section className="section">
