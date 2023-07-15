@@ -5,7 +5,7 @@ import React from "react";
 const BlogList = ({ blogs }: any) => {
   return (
     <div className="max-w-screen-xl mx-auto px-4 mb-20 ">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+      <div className="grid grid-cols-2 flex-row sm:grid-cols-2 md:grid-cols-3 gap-10">
         {blogs?.map((item: any, index: number) => {
           return (
             <div

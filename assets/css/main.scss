@@ -804,14 +804,16 @@ h5 {
     }
   }
   .page-intro__slide {
-    height: 450px;
+    // height: 450px;
     position: relative;
     background-repeat: no-repeat;
+    margin-top: 64px;
     background-position: center;
     background-size: cover;
+    aspect-ratio: 19/10;
     background-color: #fafafa;
     @include breakpoint(phone) {
-      height: 90vh;
+      // height: 90vh;
     }
     &:before {
       content: "";
@@ -1479,6 +1481,9 @@ h5 {
     }
   }
   .site-footer__description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 70px;
     @include breakpoint(phone) {
       // width: 400px;
@@ -2211,6 +2216,9 @@ h5 {
     }
   }
   .product-filter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 38px;
     &:last-of-type {
       margin-bottom: 0;
@@ -2254,8 +2262,9 @@ h5 {
   }
   .product__prices {
     display: flex;
+    justify-content: center;
     h4 {
-      font-weight: 400;
+      font-weight: 500;
       color: #ff0000;
       font-size: 18px;
       @include breakpoint(phone) {
@@ -2283,7 +2292,7 @@ h5 {
   }
   .product__name {
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 500;
     margin-bottom: 9px;
     @include breakpoint(phone) {
       font-size: 30px;
@@ -2573,7 +2582,9 @@ h5 {
     line-height: 140%;
   }
   .cart-actions {
-    margin-top: 75px;
+    margin-top: 40px;
+    border-top: 1px solid #d8d8d8;
+    padding-top: 12px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -2584,6 +2595,7 @@ h5 {
       display: flex;
       width: 100%;
       align-items: center;
+
       @include breakpoint(phone) {
         margin-top: 30px;
       }
@@ -2711,7 +2723,20 @@ h5 {
       padding: 10px 0;
       color: #000;
       @include breakpointMax(phone) {
-        width: 100% !important;
+        &:nth-of-type(1) {
+          width: 100% !important;
+        }
+        &:nth-of-type(2) {
+          width: 100% !important;
+          padding-left: 80px !important;
+        }
+        &:nth-of-type(3) {
+          width: 50% !important;
+        }
+        &:nth-of-type(4) {
+          width: 50% !important;
+          color: #fbb03b;
+        }
       }
       @include breakpoint(phone) {
         display: table-cell;
@@ -2722,7 +2747,7 @@ h5 {
       &.cart-item-before {
         &:before {
           font-weight: 600;
-          margin-right: 15px;
+          margin-right: 8px;
           content: attr(data-label) ": ";
           @include breakpoint(phone) {
             display: none;
@@ -2730,7 +2755,7 @@ h5 {
         }
       }
       &:nth-of-type(1) {
-        width: 30%;
+        width: 50%;
       }
       &:nth-of-type(2) {
         width: 12%;
@@ -2739,7 +2764,6 @@ h5 {
         width: 12%;
       }
       &:nth-of-type(4) {
-        width: 50% !important;
         text-align: right;
         @include breakpoint(phone) {
           text-align: center;

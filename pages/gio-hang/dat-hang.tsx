@@ -131,13 +131,8 @@ const CheckoutPage = () => {
               <CheckoutStatus step="checkout" />
             </div>
 
-            <div className="checkout-content">
+            <div className="checkout-content m md:flex-row-reverse">
               <div className="checkout__col-6">
-                {/* <div className="checkout__btns">
-                <button className="btn btn--rounded btn--yellow">Log in</button>
-                <button className="btn btn--rounded btn--border">Sign up</button>
-              </div> */}
-
                 <div className="block">
                   <h3 className="block__title">Thông tin của bạn</h3>
                   <form className="form">
@@ -224,7 +219,7 @@ const CheckoutPage = () => {
               <a href="/gio-hang" className="cart__btn-back">
                 <i className="icon-left"></i> Quay lại
               </a>
-              <div className="cart-actions__items-wrapper">
+              <div className="cart-actions__items-wrapper ">
                 <button
                   onClick={() => router.push("/cua-hang")}
                   type="button"

@@ -1,9 +1,9 @@
 // import { useState } from 'react';
-import List from './list';
+import List from "./list";
 
-const ProductsContent = ({products}:any) => {
+const ProductsContent = ({ products }: any, loadMore: any) => {
   // const [orderProductsOpen, setOrderProductsOpen] = useState(false);
-  
+
   return (
     <section className="products-content">
       {/* <div className="products-content__intro">
@@ -13,10 +13,9 @@ const ProductsContent = ({products}:any) => {
         </form>
       </div> */}
 
-      <List products={products} />
+      <List loadMore={loadMore} products={products} />
     </section>
   );
 };
-  
-export default ProductsContent
-  
+
+export default ProductsContent;

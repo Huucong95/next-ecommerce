@@ -8,9 +8,11 @@ import ProductsFilter from "components/products-filter";
 import ProductsContent from "components/products-content";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { Pagination } from "antd";
+
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const slug = query.slug2;
+  console.log(slug);
+  
   let data = null;
   data = await getProducts(slug, {
     pagination: {
@@ -24,7 +26,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         },
       },
     },
-
     populate: "*",
   });
 
@@ -34,52 +35,79 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     },
   };
 };
-const Products = ({ data }: any) => {
-  console.log(data);
 
-  const [detail, setDetail] = useState<any>(data.data);
+const Products = ({ data }: any) => {
+  console.log("product", data);
+
+  const [products, setProducts] = useState<any[]>([]);
   const total = data.meta.pagination.total;
 
   const router = useRouter();
-  const { slug2 } = router.query;
-  const onChange = async (e: any) => {
-    const res = await getProducts(slug2, {
+  const { slug } = router.query;
+
+  const handleInfiniteScroll = async () => {
+    const currentPage = Math.ceil(products.length / 9) + 1;
+    if (currentPage > total) return; // Kiểm tra nếu trang hiện tại bằng tổng số trang thì không tải thêm
+
+    const res = await getProducts(slug, {
       pagination: {
-        page: e,
+        page: currentPage,
         pageSize: 9,
       },
       filters: {
-        blog_category_child: {
+        categories: {
           slug: {
-            $eq: slug2,
+            $eq: slug,
           },
         },
       },
       populate: "*",
     });
-    setDetail(res.data);
+    const newProducts = res.data;
+    setProducts(prevProducts => [...prevProducts, ...newProducts]);
   };
+
   useEffect(() => {
     const fetchData = async () => {
-      const result = await getProducts(slug2, {
+      const result = await getProducts(slug, {
         pagination: {
           page: 1,
           pageSize: 9,
         },
         filters: {
-          category_children: {
+          categories: {
             slug: {
-              $eq: slug2,
+              $eq: slug,
             },
           },
         },
-
         populate: "*",
       });
-      setDetail(result.data);
+      setProducts(result.data);
     };
     fetchData();
-  }, [slug2]);
+  }, [slug]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop =
+        (document.documentElement && document.documentElement.scrollTop) ||
+        document.body.scrollTop;
+      const scrollHeight =
+        (document.documentElement && document.documentElement.scrollHeight) ||
+        document.body.scrollHeight;
+      const clientHeight =
+        document.documentElement.clientHeight || window.innerHeight;
+
+      if (scrollTop + clientHeight >= scrollHeight) {
+        handleInfiniteScroll();
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [products.length, total]);
+
   return (
     <Layout>
       <Head>{/* <title></title> */}</Head>
@@ -88,23 +116,10 @@ const Products = ({ data }: any) => {
         <section className="products-page">
           <div className="container">
             <ProductsFilter />
-            {detail && <ProductsContent products={detail} />}
-          </div>
-          <div className="pt-20">
-            {total && (
-              <Pagination
-                defaultCurrent={1}
-                defaultPageSize={data.meta.pagination.pageSize}
-                total={total}
-                onChange={onChange}
-                className="flex justify-center"
-              />
-            )}
+            {products && <ProductsContent products={products} />}
           </div>
         </section>
       </div>
-
-      {/* <Footer /> */}
     </Layout>
   );
 };

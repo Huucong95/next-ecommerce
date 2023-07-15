@@ -42,7 +42,7 @@ const ShoppingCart = ({ thumb, name, id,  count, price }: ProductStoreType) => {
   }
 
   return (
-    <tr>
+    <tr className='flex'>
       <td>
         <div className="cart-product">
           <div className="cart-product__img">
@@ -55,7 +55,7 @@ const ShoppingCart = ({ thumb, name, id,  count, price }: ProductStoreType) => {
           </div>
         </div>
       </td>
-      <td>
+      <td className='cart-item-before' data-label="Số lượng">
         <div className="quantity-button">
           <button type="button" onClick={() => setProductCount(count - 1)} className="quantity-button__btn">
             -
@@ -66,8 +66,8 @@ const ShoppingCart = ({ thumb, name, id,  count, price }: ProductStoreType) => {
           </button>
         </div>
       </td>
-      <td>{formatMoney(price)}đ</td>
-      <td>{formatMoney(count*price)}đ</td>
+      <td className='cart-item-before' data-label="Đơn giá">{formatMoney(price)}đ</td>
+      <td className='cart-item-before' data-label="Thành tiền">{formatMoney(count*price)}đ</td>
       <td className="cart-item-cancel"><i className="icon-cancel" onClick={() => removeFromCart()}></i></td>
     </tr>
   )

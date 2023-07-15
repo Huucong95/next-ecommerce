@@ -57,8 +57,8 @@ const ShoppingCart = () => {
       
         <div className="cart-actions">
           <a href="/cua-hang" className="cart__btn-back"><i className="icon-left"></i> Tiếp tục mua hàng</a>
-          <div className="cart-actions__items-wrapper">
-            <p className="cart-actions__total">Tổng đơn hàng<strong>{formatMoney(priceTotal())}đ</strong></p>
+          <div className="cart-actions__items-wrapper flex flex-col gap-8">
+            <p className="cart-actions__total flex justify-between w-full">Tổng đơn hàng<strong>{formatMoney(priceTotal())}đ</strong></p>
             <a href="/gio-hang/dat-hang" className="btn btn--rounded btn--yellow">Xác nhận đặt hàng</a>
           </div>
         </div>

@@ -17,7 +17,7 @@ const Blogs = ({ blogs }: any) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-1 md:gap-10">
         {blogs?.map((item: any, index: number) => {
           return (
             <div
@@ -27,8 +27,8 @@ const Blogs = ({ blogs }: any) => {
               <Link href={`/blog/${item.attributes.slug}`}>
                 <div className="relative">
                   <img
-                    className="w-full h-[250px]"
-                    height="60px"
+                    className="w-full aspect-[4/3]"
+                    // height="60px"
                     src={`${URL}${item.attributes?.banner?.data.attributes.url}`}
                     alt={item.attributes?.banner?.data.attributes.name}
                   />
@@ -36,21 +36,18 @@ const Blogs = ({ blogs }: any) => {
                   <Link
                     href={`/danh-muc-blog/${item?.attributes?.blog_category?.data?.attributes?.slug}`}
                   >
-                    <div className="text-xs absolute top-0 right-0 bg-orange-600 px-4 py-2 text-white mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
-                      {
-                        item.attributes?.blog_category?.data?.attributes
-                          .name
-                      }
+                    <div className="text-xs md:text-xs  absolute top-0 right-0 bg-orange-600 px-4 py-2 text-white mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
+                      {item.attributes?.blog_category?.data?.attributes.name}
                     </div>
                   </Link>
                 </div>
               </Link>
-              <div className="px-6 py-4 mb-auto">
+              <div className="p-2 md:px-6 md:py-4 mb-auto">
                 <Link
                   href={`/blog/${item.attributes.slug}`}
                   className="font-medium text-lg    hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-4"
                 >
-                  <span className="text-black font-semibold">
+                  <span className="text-black font-semibold text-sm md:text-md">
                     {item.attributes.title}
                   </span>
                 </Link>

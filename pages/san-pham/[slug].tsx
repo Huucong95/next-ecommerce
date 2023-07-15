@@ -80,7 +80,7 @@ const Product = ({ product, products }: any) => {
       {product && (
         <>
           {/* <Breadcrumb /> */}
-          <section className="product-single mt-12">
+          <section className="product-single mt-12 flex flex-col items-center">
             <div className="container">
               <div className="product-single__content">
                 {product && (
