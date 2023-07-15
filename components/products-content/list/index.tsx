@@ -1,6 +1,6 @@
 import ProductItem from "../../product-item";
 import ProductsLoading from "./loading";
-const ProductsContent = ({ products }: any, loadMore: any) => {
+const ProductsContent = ({ products }: any) => {
   return (
     <>
       {!true && <ProductsLoading />}
