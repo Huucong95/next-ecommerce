@@ -245,7 +245,7 @@ export async function getFeaturedProducts() {
   const index = await fetchAPI("/products", {
     pagination: {
       page: 1,
-      pageSize: 5,
+      pageSize:16,
     },
     filters: {
       category_children: {

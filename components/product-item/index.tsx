@@ -3,22 +3,31 @@ import { useDispatch } from "react-redux";
 import { ProductStoreType, ProductTypeList } from "types";
 import { useRouter } from "next/router";
 import { addProduct } from "store/reducers/cart";
-import {formatMoney} from "../../utils/format"
-
+import { formatMoney } from "../../utils/format";
 const ProductItem = ({
-  discount,
-  images,
   image,
   id,
   name,
   price,
   currentPrice,
 }: ProductTypeList) => {
-  console.log(discount, images);
-  
   const dispatch = useDispatch();
   const router = useRouter();
-
+  console.log(
+    "🚀 ~ file: index.tsx:20 ~ router:",
+    router.pathname == "/san-pham/[slug]"
+  );
+  const handleChange = () => {
+    if (router.pathname == "/san-pham/[slug]") {
+      console.log(
+        "🚀 ~ file: index.tsx:23 ~ handleChange ~ router.pathname:",
+        router.pathname
+      );
+      window.location.href = `/san-pham/${id}`;
+    } else {
+      router.push(`/san-pham/${id}`);
+    }
+  };
   const addToCart = () => {
     const productToSave: ProductStoreType = {
       id: id,
@@ -39,7 +48,7 @@ const ProductItem = ({
   return (
     <div className="bg-white cursor-pointer w-full shadow hover:shadow-lg rounded-lg h-full  relative">
       <div
-        onClick={() => router.push(`/san-pham/${id}`)}
+        onClick={() => handleChange()}
         className="bg-gray-400 h-40 md:h-64 rounded-t-lg p-4 bg-no-repeat bg-center bg-cover"
         style={{
           backgroundImage: `url(${process.env.NEXT_PUBLIC_URL}${image} )`,
@@ -48,10 +57,7 @@ const ProductItem = ({
       <div className="flex flex-col justify-items-end pb-24">
         <div className="cursor-pointer">
           <div className="flex  justify-between items-start px-2 pt-2">
-            <div
-              className="p-2 flex-grow"
-              onClick={() => router.push(`/san-pham/${id}`)}
-            >
+            <div className="p-2 flex-grow" onClick={() => handleChange()}>
               <h1 className="mb-4 font-medium text-md font-poppins h-full">
                 {name}
               </h1>
@@ -64,7 +70,8 @@ const ProductItem = ({
               {formatMoney(price)}đ
             </div>
             <div className="text-xs text-gray-500 line-through font-poppins">
-              {formatMoney(currentPrice)}{currentPrice&& <span>đ</span>}
+              {formatMoney(currentPrice)}
+              {currentPrice && <span>đ</span>}
             </div>
           </div>
           <div className="flex flex-col gap-2 md:flex-row justify-between items-center  pb-2">
@@ -78,11 +85,13 @@ const ProductItem = ({
             </div>
 
             <div className="w-full">
-                
-              <button onClick={()=> {
-                addToCart()
-                router.push('/gio-hang/dat-hang')
-              }} className="block w-full text-xs bg-white text-orange-500 borderPrimary px-3 py-2 rounded uppercase  font-medium">
+              <button
+                onClick={() => {
+                  addToCart();
+                  router.push("/gio-hang/dat-hang");
+                }}
+                className="block w-full text-xs bg-white text-orange-500 borderPrimary px-3 py-2 rounded uppercase  font-medium"
+              >
                 Đặt hàng
               </button>
             </div>

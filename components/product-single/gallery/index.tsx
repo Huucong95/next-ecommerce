@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { URL } from "utils/env";
 
 const Gallery = ({ images, image }: any) => {
-  const [featImage, setFeatImage] = useState(image?.data.attributes.url);
+  const [featImage, setFeatImage] = useState("");
+  useEffect(() => {
+    setFeatImage(image?.data.attributes.url);
+  }, [image]);
 
   return (
     <section className="product-gallery flex flex-col-reverse md:flex-row gap-2">

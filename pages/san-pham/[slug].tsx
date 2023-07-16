@@ -21,22 +21,31 @@ import ProductsFeatured from "components/products-featured";
 // import { URL } from "utils/env";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const slug = query.slug;
-  const res = await getProduct(slug);
-  const product = await res[0].attributes;
-  const products = await getFeaturedProducts();
+  try {
+    const slug = query.slug;
+    const res = await getProduct(slug);
+    const product = await res[0]?.attributes;
+    const products = await getFeaturedProducts();
 
-  return {
-    props: {
-      product,
-      products,
-    },
-  };
+    return {
+      props: {
+        product,
+        products,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching product data:", error);
+
+    return {
+      props: {
+        product: null, // Return null in case of an error
+      },
+    };
+
+  }
 };
 
 const Product = ({ product, products }: any) => {
-  console.log(products);
-
   const router = useRouter();
 
   const dispatch = useDispatch();
@@ -59,12 +68,11 @@ const Product = ({ product, products }: any) => {
 
     dispatch(addProduct(productStore));
   };
-  console.log(product);
 
   return (
     <Layout>
-      <Head>
-        <title>{product.SEO.metaTitle}</title>
+      <Head >
+        <title>{product.SEO?.metaTitle}</title>
         <meta
           name="viewport"
           content="viewport-fit=cover width=device-width, initial-scale=1"
