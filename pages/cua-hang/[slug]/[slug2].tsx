@@ -12,7 +12,6 @@ import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const slug = query.slug2;
-  console.log(slug);
 
   let data = null;
   data = await getProducts(slug, {
@@ -36,21 +35,26 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     },
   };
 };
-
+//category_children
 const Products = ({ data }: any) => {
-  console.log("product", data);
-
   const [products, setProducts] = useState<any[]>([]);
   const total = data.meta.pagination.total;
 
   const router = useRouter();
-  const { slug } = router.query;
+  const  slug  = router.query.slug2;
 
   const fetchProducts = async (page: number) => {
     const res = await getProducts(slug, {
       pagination: {
         page,
         pageSize: 9,
+      },
+      filters: {
+        category_children: {
+          slug: {
+            $eq: slug,
+          },
+        },
       },
       populate: "*",
     });
@@ -66,7 +70,7 @@ const Products = ({ data }: any) => {
           pageSize: 9,
         },
         filters: {
-          categories: {
+          category_children: {
             slug: {
               $eq: slug,
             },

@@ -4,10 +4,10 @@ import { getBlogsCategory } from "utils/api";
 import Layout from "../../layouts/Main";
 import BlogList from "components/blog/BlogList";
 import { GetServerSideProps } from "next";
-import {  useState } from "react";
+import { useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const slug = query.slug;
-  console.log(slug);
 
   const data = await getBlogsCategory(slug, {
     pagination: {
@@ -30,19 +30,18 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   };
 };
 
-const Blog = (data: any) => {
-  console.log("check", data);
 
-  const [detail, setDetail] = useState<any>(data.data.data);
-  const total = data.data.meta.pagination.total;
-
+const Blogs = ({ data }: any) => {
+  console.log("🚀 ~ file: index.tsx:85 ~ Blogs ~ data:", data.data);
+  const [detail, setDetail] = useState<any>(data.data);
+  const total = data.meta.pagination.total;
   const router = useRouter();
-  const { slug } = router.query;
+  const slug = router.query.slug;
 
-  const onChange = async (e: any) => {
+  const fetchProducts = async (page: number) => {
     const res = await getBlogsCategory(slug, {
       pagination: {
-        page: e,
+        page,
         pageSize: 9,
       },
       filters: {
@@ -54,21 +53,30 @@ const Blog = (data: any) => {
       },
       populate: "*",
     });
-    setDetail(res.data);
+    const newProducts = res.data;
+    setDetail((blogs: any) => [...blogs, ...newProducts]);
   };
 
-
-  // const [detail, setDetail] = useState<any>();
-  // const { slug } = router.query;
-  // const fetchBlogDetail = async (slug: any) => {
-  //   const res = await getBlogsCategoryChild(slug);
-  //   setDetail(res);
-  // };
-  // useEffect(() => {
-  //   if (slug) {
-  //     fetchBlogDetail(slug);
-  //   }
-  // }, [slug]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getBlogsCategory(slug, {
+        pagination: {
+          page: 1,
+          pageSize: 9,
+        },
+        filters: {
+          blog_category: {
+            slug: {
+              $eq: slug,
+            },
+          },
+        },
+        populate: "*",
+      });
+      setDetail(result.data);
+    };
+    fetchData();
+  }, [slug]);
 
   return (
     <Layout>
@@ -77,22 +85,18 @@ const Blog = (data: any) => {
           <h1 className="text-center font-bold text-xl bg-gray-100 py-8 mb-12">
             {detail[0]?.attributes.blog_category.data.attributes.name}{" "}
           </h1>
-          <BlogList blogs={detail} />
-          {total && (
-            <Pagination
-              defaultCurrent={1}
-              defaultPageSize={data.data.meta.pagination.pageSize}
-              total={total}
-              onChange={onChange}
-              className="flex justify-center"
-            />
-          )}
+          <InfiniteScroll
+            dataLength={detail.length}
+            next={() => fetchProducts(Math.ceil(detail.length / 9) + 1)}
+            hasMore={detail.length < total}
+            loader={<h4>Loading...</h4>}
+            endMessage={<p></p>}
+          >
+            <BlogList blogs={detail} />
+          </InfiniteScroll>
         </div>
       )}
-
-      {/* <Footer /> */}
     </Layout>
   );
 };
-
-export default Blog;
+export default Blogs;

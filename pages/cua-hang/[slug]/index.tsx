@@ -12,7 +12,6 @@ import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const slug = query.slug;
-  console.log(slug);
 
   let data = null;
   data = await getProducts(slug, {
@@ -38,7 +37,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 };
 
 const Products = ({ data }: any) => {
-  console.log("product", data);
 
   const [products, setProducts] = useState<any[]>([]);
   const total = data.meta.pagination.total;

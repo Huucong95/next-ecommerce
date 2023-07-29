@@ -6,19 +6,24 @@ import { useRouter } from "next/router";
 import { getCategory } from "utils/api";
 
 const ProductsFilter = () => {
+  const [filtersOpen, setFiltersOpen] = useState(false);
+
   const router = useRouter();
-  const { slug,slug2 } = router.query;
+  const { slug, slug2 } = router.query;
   const [categories, setCategories] = useState<any>(null);
   const getMenu = async () => {
     const res2 = await getCategory();
-
     setCategories(res2);
   };
   useEffect(() => {
     getMenu();
   }, []);
-  const [filtersOpen, setFiltersOpen] = useState(false);
-
+  useEffect(() => {
+    setFiltersOpen(false);
+  }, [slug2]);
+  useEffect(() => {
+    setFiltersOpen(false);
+  }, [slug]);
   const addQueryParams = () => {
     // query params changes
   };
@@ -130,12 +135,7 @@ const ProductsFilter = () => {
           </div>
         </div> */}
 
-        <button
-          type="submit"
-          className="btn btn-submit btn--rounded btn--yellow"
-        >
-          Apply
-        </button>
+      
       </div>
     </form>
   );
