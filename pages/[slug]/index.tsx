@@ -21,6 +21,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       },
     },
     populate: "*",
+    sort: "createdAt:desc",
+
   });
   return {
     props: {
@@ -31,7 +33,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
 
 const Blogs = ({ data }: any) => {
-  console.log("🚀 ~ file: index.tsx:85 ~ Blogs ~ data:", data.data);
   const [detail, setDetail] = useState<any>(data.data);
   const total = data.meta.pagination.total;
   const router = useRouter();
@@ -51,6 +52,8 @@ const Blogs = ({ data }: any) => {
         },
       },
       populate: "*",
+    sort: "createdAt:desc",
+
     });
     const newProducts = res.data;
     setDetail((blogs: any) => [...blogs, ...newProducts]);
@@ -71,6 +74,8 @@ const Blogs = ({ data }: any) => {
           },
         },
         populate: "*",
+    sort: "createdAt:desc",
+
       });
       setDetail(result.data);
     };

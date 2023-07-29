@@ -139,7 +139,7 @@ export async function getBlogsIndex() {
   const index = await fetchAPI("/blogs", {
     pagination: {
       page: 1,
-      pageSize: 3,
+      pageSize: 9,
     },
     populate: {
       banner: {
@@ -154,6 +154,7 @@ export async function getBlogsIndex() {
       },
     },
     populate: "*",
+    sort: "createdAt:desc",
   });
   return index?.data;
 }

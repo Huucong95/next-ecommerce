@@ -1,5 +1,11 @@
 import Link from "next/link";
 import { URL } from "../../utils/env";
+import "swiper/css/navigation";
+// import Swiper core and required components
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { EffectFade, Navigation, Grid } from "swiper";
+SwiperCore.use([EffectFade, Navigation, Grid]);
+
 const Blogs = ({ blogs }: any) => {
   return (
     <div className="container  pb-12">
@@ -16,19 +22,70 @@ const Blogs = ({ blogs }: any) => {
           </Link>
         </div>
       </div>
-
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-1 md:gap-10">
-        {blogs?.map((item: any, index: number) => {
-          return (
-            <div
+      <Swiper
+        slidesPerView={4}
+        grid={{
+          rows: 1,
+          fill: "row"
+        }}
+        spaceBetween={10}
+        pagination={{
+          clickable: true,
+        }}
+        //  modules={[Grid, Pagination]}
+        className="mySwiper"
+        // slidesPerView={4}
+        // spaceBetween={10}
+        navigation
+        // grid={{ fill: "row", rows: 1 }}
+        breakpoints={{
+          "@0.00": {
+            slidesPerView: 2,
+            // spaceBetween: 2,
+            grid: {
+              rows: 1,
+              fill: "row",
+            },
+          },
+          "@0.75": {
+            slidesPerView: 4,
+            // spaceBetween: 2,
+            grid: {
+              rows: 1,
+              fill: "row",
+            },
+          },
+          "@1.00": {
+            slidesPerView: 4,
+            // spaceBetween: 2,
+            grid: {
+              rows: 1,
+              fill: "row",
+            },
+          },
+          "@1.50": {
+            slidesPerView: 4,
+            // spaceBetween: 2,
+            grid: {
+              rows: 1,
+              fill: "row",
+            },
+          },
+        }}
+        modules={[Navigation, Grid]}
+        // className="swiper-wrapper"
+      >
+        {blogs.map((item: any, index: number) => (
+          <SwiperSlide key={index} className="swiper-slide flex items-stretch ">
+            <div className="h-full w-full py-4">
+              <div
               key={index}
-              className="rounded overflow-hidden shadow-lg flex flex-col cursor-pointer"
+              className="rounded overflow-hidden shadow-lg flex flex-col cursor-pointer h-full"
             >
               <Link href={`/blog/${item.attributes.slug}`}>
                 <div className="relative">
                   <img
                     className="w-full aspect-[4/3]"
-                    // height="60px"
                     src={`${URL}${item.attributes?.banner?.data.attributes.url}`}
                     alt={item.attributes?.banner?.data.attributes.name}
                   />
@@ -36,7 +93,7 @@ const Blogs = ({ blogs }: any) => {
                   <Link
                     href={`/${item?.attributes?.blog_category?.data?.attributes?.slug}`}
                   >
-                    <div className="text-xs md:text-xs  absolute top-0 right-0 bg-orange-600 px-4 py-2 text-white mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
+                    <div className="text-[10px] md:text-xs  absolute top-0 right-0 bg-orange-600 px-4 py-2 text-white mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
                       {item.attributes?.blog_category?.data?.attributes.name}
                     </div>
                   </Link>
@@ -47,27 +104,20 @@ const Blogs = ({ blogs }: any) => {
                   href={`/blog/${item.attributes.slug}`}
                   className="font-medium text-lg    hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-4"
                 >
-                  <span className="text-black font-semibold text-sm md:text-md">
+                  <div className="text-black font-semibold text-sm md:text-md leading-4">
                     {item.attributes.title}
-                  </span>
+                  </div>
                 </Link>
                 <p className="text-gray-500 text-sm line-clamp-2">
                   {item.attributes.description}
                 </p>
               </div>
-              {/* <div className="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
-                <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-                  <span className="ml-1">6 mins ago</span>
-                </span>
-
-                <span className="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
-                  <span className="ml-1">39 Comments</span>
-                </span>
-              </div> */}
+            
             </div>
-          );
-        })}
-      </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };

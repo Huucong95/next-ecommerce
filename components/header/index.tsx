@@ -259,9 +259,8 @@ const Header = ({ isErrorPage, menus, categories }: HeaderType) => {
         <div className="site-header__actions">
           <div className=" md:mr-36">
             <a href="tel:0938841286">
-              <span className="text-xs md:text-xl text-orange-500 md:font-bold">
-                {" "}
-                Hotline: 0938841286
+              <span className="text-xl font-bold  text-orange-500 md:font-bold">
+                0938.841.286
               </span>
             </a>
           </div>

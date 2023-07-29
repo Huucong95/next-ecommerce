@@ -22,7 +22,7 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
           rows: 2,
           fill: "row"
         }}
-        spaceBetween={30}
+        spaceBetween={10}
         pagination={{
           clickable: true,
         }}
