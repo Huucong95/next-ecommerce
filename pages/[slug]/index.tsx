@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { Pagination } from "antd";
 import { getBlogsCategory } from "utils/api";
 import Layout from "../../layouts/Main";
 import BlogList from "components/blog/BlogList";
