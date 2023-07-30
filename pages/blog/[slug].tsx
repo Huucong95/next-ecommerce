@@ -1,6 +1,4 @@
-import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
-import { useEffect, useState } from "react";
 import { getBlogsDetail } from "utils/api";
 import Layout from "../../layouts/Main";
 import Breadcrumb from "components/breadcrumb";
