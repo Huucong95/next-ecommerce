@@ -52,6 +52,7 @@ const Blog = () => {
             property="og:title"
             content={detail.attributes?.SEO?.metaTitle || ""}
           />
+          <meta property="og:image" content={URL+detail.attributes?.SEO?.image.data.attributes.url} />
           <meta charSet="utf-8"></meta>
         </Head>
       )}

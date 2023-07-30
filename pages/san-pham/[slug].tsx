@@ -18,7 +18,7 @@ import Head from "next/head";
 // import Link from "next/link";
 import ProductsFeatured from "components/products-featured";
 // import { formatMoney } from "utils/format";
-// import { URL } from "utils/env";
+import { URL } from "utils/env";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   try {
@@ -41,7 +41,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
         product: null, // Return null in case of an error
       },
     };
-
   }
 };
 
@@ -71,7 +70,7 @@ const Product = ({ product, products }: any) => {
 
   return (
     <Layout>
-      <Head >
+      <Head>
         <title>{product.SEO?.metaTitle}</title>
         <meta
           name="viewport"
@@ -83,6 +82,11 @@ const Product = ({ product, products }: any) => {
           content={product.SEO?.metaDescription || ""}
         ></meta>
         <meta property="og:title" content={product.SEO?.metaTitle || ""} />
+        <meta
+          property="og:image"
+          content={URL + product?.SEO?.image.data.attributes.url}
+        />
+
         <meta charSet="utf-8"></meta>
       </Head>
       {product && (
