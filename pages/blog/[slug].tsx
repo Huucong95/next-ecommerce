@@ -6,25 +6,44 @@ import Layout from "../../layouts/Main";
 import Breadcrumb from "components/breadcrumb";
 import { URL } from "utils/env";
 import Head from "next/head";
-// import Reviews from '../../components/product-single/reviews';
+import { GetServerSideProps } from "next";
 
-// types
-// const REACT_IMAGE_BASE_URL = "http://localhost:1337";
-const Blog = () => {
-  const [detail, setDetail] = useState<any>();
-  const router = useRouter();
-  const { slug } = router.query;
-  const fetchBlogDetail = async (slug: any) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  try {
+    const slug = query.slug;
     const res = await getBlogsDetail(slug);
-    setDetail(res[0]);
     console.log(res[0]);
-  };
-  useEffect(() => {
-    if (slug) {
-      setDetail(null);
-      fetchBlogDetail(slug);
-    }
-  }, [slug]);
+
+    return {
+      props: {
+        detail: res[0],
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching product data:", error);
+
+    return {
+      props: {
+        product: null, // Return null in case of an error
+      },
+    };
+  }
+};
+const Blog = ({ detail }: any) => {
+  // const [detail, setDetail] = useState<any>();
+  // const router = useRouter();
+  // const { slug } = router.query;
+  // const fetchBlogDetail = async (slug: any) => {
+  //   const res = await getBlogsDetail(slug);
+  //   setDetail(res[0]);
+  //   console.log(res[0]);
+  // };
+  // useEffect(() => {
+  //   if (slug) {
+  //     setDetail(null);
+  //     fetchBlogDetail(slug);
+  //   }
+  // }, [slug]);
   // console.log(detail);
 
   return (
@@ -52,7 +71,10 @@ const Blog = () => {
             property="og:title"
             content={detail.attributes?.SEO?.metaTitle || ""}
           />
-          <meta property="og:image" content={URL+detail.attributes?.SEO?.image.data.attributes.url} />
+          <meta
+            property="og:image"
+            content={URL + detail.attributes?.SEO?.image?.data.attributes.url}
+          />
           <meta charSet="utf-8"></meta>
         </Head>
       )}

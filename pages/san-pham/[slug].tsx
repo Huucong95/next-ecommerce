@@ -84,7 +84,7 @@ const Product = ({ product, products }: any) => {
         <meta property="og:title" content={product.SEO?.metaTitle || ""} />
         <meta
           property="og:image"
-          content={URL + product?.SEO?.image.data.attributes.url}
+          content={URL + product?.SEO?.image?.data.attributes.url}
         />
 
         <meta charSet="utf-8"></meta>
